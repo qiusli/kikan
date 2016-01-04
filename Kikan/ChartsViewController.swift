@@ -8,9 +8,11 @@
 
 import UIKit
 import PNChart
+import Foundation
 
 class ChartsViewController: UITableViewController {
     var dataModel: DataModel?
+    var monthStrRep = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "June.", "July.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -31,21 +33,32 @@ class ChartsViewController: UITableViewController {
         return 5
     }
     
+    // from 7 days before to now currently
     func configureLineChart() -> PNLineChart {
-        let useDates = dataModel!.useDates
+        let date_times = dataModel!.date_times
         let lineChart = PNLineChart.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.grayColor()
-        var labels = [String]()
-        for date in useDates {
-            labels.append(String(date.getDay()))
+
+        var data01Array = [CGFloat]()
+        var dateLabels = [String]()
+        for (date, times) in date_times {
+            let dayStr = date[date.endIndex.advancedBy(-2)..<date.endIndex]
+            let dayInt = Int(dayStr)
+            
+            let monthStr = date[date.startIndex.advancedBy(4)..<date.startIndex.advancedBy(6)]
+            let monthInt = Int(monthStr)
+            let m = monthStrRep[monthInt! - 1]
+            
+            let label = "\(m)\(dayInt!)"
+            dateLabels.append(label)
+            data01Array.append(CGFloat(times))
         }
-        lineChart.xLabels = labels
+        lineChart.xLabels = dateLabels
         lineChart.showCoordinateAxis = true
         
-        let data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
-//        let data01Array: [CGFloat]
+//        let data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
         
         let data01:PNLineChartData = PNLineChartData()
         data01.color = UIColor.greenColor()

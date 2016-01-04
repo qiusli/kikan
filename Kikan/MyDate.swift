@@ -8,7 +8,11 @@
 
 import Foundation
 
-class MyDate: NSObject, NSCoding {
+class MyDate: NSObject, NSCoding, Comparable {
+    override var description: String {
+        return "\(getYear())\(adjustMonthToString())\(adjustDayToString())"
+    }
+    
     var year: Int!, month: Int!, day: Int!, weekOfYear: Int!, dayOfWeek: Int!
     
     init(year: Int, month: Int, day: Int, weekOfYear: Int, dayOfWeek: Int) {
@@ -57,4 +61,21 @@ class MyDate: NSObject, NSCoding {
     func getDayOfWeek() -> Int {
         return dayOfWeek
     }
+    
+    func adjustMonthToString() -> String {
+        return getMonth() < 10 ? "0" + String(getMonth()) : String(getMonth())
+    }
+    
+    func adjustDayToString() -> String {
+        return getDay() < 10 ? "0" + String(getDay()) : String(getDay())
+    }
+}
+
+func < (lhs: MyDate, rhs: MyDate) -> Bool {
+    return lhs.description < rhs.description
+}
+
+
+func == (lhs: MyDate, rhs: MyDate) -> Bool {    
+    return lhs.description < rhs.description
 }

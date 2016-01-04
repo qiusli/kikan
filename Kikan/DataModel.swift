@@ -10,11 +10,10 @@ import Foundation
 
 class DataModel {
     var userSelections: UserSelections!
-    var useDates = [MyDate]()
+    var date_times = [String: Int]()
     
     init() {
         userSelections = UserSelections(tickSound: "grandfather", alarmSound: "rewind")
-        
         loadUserInfo()
     }
     
@@ -30,7 +29,11 @@ class DataModel {
     func addUseDates(useDate: NSDate) {
         let components = getComponents(useDate)
         let date = MyDate(year: components.year, month: components.month, day: components.day, weekOfYear: components.weekOfYear, dayOfWeek: components.weekday)
-        useDates.append(date)
+        if date_times[date.description] != nil {
+           date_times[date.description] = date_times[date.description]! + 1
+        } else {
+            date_times[date.description] = 1
+        }
     }
     
     func getComponents(date: NSDate) -> NSDateComponents {
@@ -44,7 +47,7 @@ class DataModel {
         let data = NSMutableData()
         let archiever = NSKeyedArchiver(forWritingWithMutableData: data)
         archiever.encodeObject(userSelections, forKey: "UserSelections")
-        archiever.encodeObject(useDates, forKey: "UseDates")
+        archiever.encodeObject(date_times, forKey: "DateTimes")
         archiever.finishEncoding()
         data.writeToFile(dataFilePath(), atomically: true)
     }
@@ -57,8 +60,8 @@ class DataModel {
                 if let val = unarchiver.decodeObjectForKey("UserSelections") {
                     userSelections = val as! UserSelections
                 }
-                if let val = unarchiver.decodeObjectForKey("UseDates") {
-                    useDates = val as! [MyDate]
+                if let val = unarchiver.decodeObjectForKey("DateTimes") {
+                    date_times = val as! [String: Int]
                 }
                 unarchiver.finishDecoding()
             }
