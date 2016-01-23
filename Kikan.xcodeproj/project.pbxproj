@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFA2461C54397D00E3F057 /* AppDelegate.swift */; };
+		AADFA2491C54397D00E3F057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFA2481C54397D00E3F057 /* ViewController.swift */; };
+		AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADFA24A1C54397D00E3F057 /* Main.storyboard */; };
+		AADFA24E1C54397D00E3F057 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADFA24D1C54397D00E3F057 /* Assets.xcassets */; };
+		AADFA2511C54397D00E3F057 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADFA24F1C54397D00E3F057 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AADFA2431C54397D00E3F057 /* Kikan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kikan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AADFA2461C54397D00E3F057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AADFA2481C54397D00E3F057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AADFA24B1C54397D00E3F057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AADFA24D1C54397D00E3F057 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AADFA2501C54397D00E3F057 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AADFA2521C54397D00E3F057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AADFA2401C54397D00E3F057 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AADFA23A1C54397D00E3F057 = {
+			isa = PBXGroup;
+			children = (
+				AADFA2451C54397D00E3F057 /* Kikan */,
+				AADFA2441C54397D00E3F057 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AADFA2441C54397D00E3F057 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AADFA2431C54397D00E3F057 /* Kikan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AADFA2451C54397D00E3F057 /* Kikan */ = {
+			isa = PBXGroup;
+			children = (
+				AADFA2461C54397D00E3F057 /* AppDelegate.swift */,
+				AADFA2481C54397D00E3F057 /* ViewController.swift */,
+				AADFA24A1C54397D00E3F057 /* Main.storyboard */,
+				AADFA24D1C54397D00E3F057 /* Assets.xcassets */,
+				AADFA24F1C54397D00E3F057 /* LaunchScreen.storyboard */,
+				AADFA2521C54397D00E3F057 /* Info.plist */,
+			);
+			path = Kikan;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AADFA2421C54397D00E3F057 /* Kikan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AADFA2551C54397D00E3F057 /* Build configuration list for PBXNativeTarget "Kikan" */;
+			buildPhases = (
+				AADFA23F1C54397D00E3F057 /* Sources */,
+				AADFA2401C54397D00E3F057 /* Frameworks */,
+				AADFA2411C54397D00E3F057 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kikan;
+			productName = Kikan;
+			productReference = AADFA2431C54397D00E3F057 /* Kikan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AADFA23B1C54397D00E3F057 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = gs;
+				TargetAttributes = {
+					AADFA2421C54397D00E3F057 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = AADFA23E1C54397D00E3F057 /* Build configuration list for PBXProject "Kikan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AADFA23A1C54397D00E3F057;
+			productRefGroup = AADFA2441C54397D00E3F057 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AADFA2421C54397D00E3F057 /* Kikan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AADFA2411C54397D00E3F057 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADFA2511C54397D00E3F057 /* LaunchScreen.storyboard in Resources */,
+				AADFA24E1C54397D00E3F057 /* Assets.xcassets in Resources */,
+				AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AADFA23F1C54397D00E3F057 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AADFA2491C54397D00E3F057 /* ViewController.swift in Sources */,
+				AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AADFA24A1C54397D00E3F057 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADFA24B1C54397D00E3F057 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AADFA24F1C54397D00E3F057 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AADFA2501C54397D00E3F057 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AADFA2531C54397D00E3F057 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AADFA2541C54397D00E3F057 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AADFA2561C54397D00E3F057 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Kikan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gs.Kikan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AADFA2571C54397D00E3F057 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Kikan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gs.Kikan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AADFA23E1C54397D00E3F057 /* Build configuration list for PBXProject "Kikan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADFA2531C54397D00E3F057 /* Debug */,
+				AADFA2541C54397D00E3F057 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AADFA2551C54397D00E3F057 /* Build configuration list for PBXNativeTarget "Kikan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AADFA2561C54397D00E3F057 /* Debug */,
+				AADFA2571C54397D00E3F057 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AADFA23B1C54397D00E3F057 /* Project object */;
+}
