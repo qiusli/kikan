@@ -12,13 +12,13 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
 
     var minuteSlider: EFCircularSlider!
-    var hourSlider: EFCircularSlider!
+    var secondSlider: EFCircularSlider!
 
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
         minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
         let hourSliderFrame = CGRectMake(55, 220, 210, 210)
-        hourSlider = EFCircularSlider(frame: hourSliderFrame)
+        secondSlider = EFCircularSlider(frame: hourSliderFrame)
 
         super.init(coder: aDecoder)
         
@@ -35,27 +35,29 @@ class FirstViewController: UIViewController {
         minuteSlider.handleColor = minuteSlider.filledColor
         minuteSlider.addTarget(self, action: "minuteDidChange:", forControlEvents: .ValueChanged)
         
-        hourSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
-        hourSlider.filledColor = UIColor(red: 98/255.0, green: 243/255.0, blue: 252/255.0, alpha: 1.0)
-        let hourMarkingLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-        hourSlider.innerMarkingLabels = hourMarkingLabels
-        hourSlider.labelFont = UIFont.systemFontOfSize(14)
-        hourSlider.lineWidth = 12
-        hourSlider.snapToLabels = false
-        hourSlider.minimumValue = 0
-        hourSlider.maximumValue = 12
-        hourSlider.labelColor = UIColor(red: 127/255.0, green: 229/255.0, blue: 255/255.0, alpha: 1.0)
-        hourSlider.handleType = CircularSliderHandleTypeBigCircle
-        hourSlider.handleColor = hourSlider.filledColor
-        hourSlider.addTarget(self, action: "hourDidChange:", forControlEvents: .ValueChanged)
+        secondSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
+        secondSlider.filledColor = UIColor(red: 98/255.0, green: 243/255.0, blue: 252/255.0, alpha: 1.0)
+        let hourMarkingLabels = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
+        secondSlider.innerMarkingLabels = hourMarkingLabels
+        secondSlider.labelFont = UIFont.systemFontOfSize(14)
+        secondSlider.lineWidth = 12
+//        secondSlider.snapToLabels = true
+        secondSlider.minimumValue = 0
+        secondSlider.maximumValue = 60
+        secondSlider.labelColor = UIColor(red: 127/255.0, green: 229/255.0, blue: 255/255.0, alpha: 1.0)
+        secondSlider.handleType = CircularSliderHandleTypeBigCircle
+        secondSlider.handleColor = secondSlider.filledColor
+        secondSlider.addTarget(self, action: "secondDidChange:", forControlEvents: .ValueChanged)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor(red: 31/255.0, green: 61/255.0, blue: 91/255.0, alpha: 1.0)
+        minuteSlider.center = view.center
+        secondSlider.center = view.center
         view.addSubview(minuteSlider)
-        view.addSubview(hourSlider)
+        view.addSubview(secondSlider)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,17 +65,19 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func hourDidChange(slider: EFCircularSlider) {
-        let newVal = Int(slider.currentValue) != 0 ? Int(slider.currentValue) : 12
-        let oldTime: NSString = timeLabel.text!
-        let colonRange: NSRange = oldTime.rangeOfString(":")
-        timeLabel!.text = "\(newVal):\(oldTime.substringFromIndex(colonRange.location+1))"
-    }
-    
     func minuteDidChange(slider: EFCircularSlider) {
         let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
+        let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
         let oldTime: NSString = timeLabel.text!
         let colonRange: NSRange = oldTime.rangeOfString(":")
-        timeLabel!.text = "\(oldTime.substringToIndex(colonRange.location)):\(newVal)"
+        timeLabel!.text = "\(newValString):\(oldTime.substringFromIndex(colonRange.location + 1))"
+    }
+    
+    func secondDidChange(slider: EFCircularSlider) {
+        let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
+        let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
+        let oldTime: NSString = timeLabel.text!
+        let colonRange: NSRange = oldTime.rangeOfString(":")
+        timeLabel!.text = "\(oldTime.substringToIndex(colonRange.location)):\(newValString)"
     }
 }

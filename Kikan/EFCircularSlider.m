@@ -125,7 +125,6 @@ static const CGFloat kFitFrameRadius = -1.0;
 
 -(void)setInnerMarkingLabels:(NSArray*)innerMarkingLabels
 {
-    NSLog(@"aaa");
     _innerMarkingLabels = innerMarkingLabels;
     [self setNeedsUpdateConstraints]; // This could affect intrinsic content size
     [self setNeedsDisplay]; // Need to redraw with new label texts
