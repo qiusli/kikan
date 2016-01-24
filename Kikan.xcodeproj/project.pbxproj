@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */; };
 		AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFA2461C54397D00E3F057 /* AppDelegate.swift */; };
 		AADFA2491C54397D00E3F057 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFA2481C54397D00E3F057 /* ViewController.swift */; };
 		AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADFA24A1C54397D00E3F057 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVSCircularTimeSlider.swift; sourceTree = "<group>"; };
 		AADFA2431C54397D00E3F057 /* Kikan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kikan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AADFA2461C54397D00E3F057 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AADFA2481C54397D00E3F057 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAD6D86B1C54903000BFC22E /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
 		AADFA23A1C54397D00E3F057 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 		AADFA2451C54397D00E3F057 /* Kikan */ = {
 			isa = PBXGroup;
 			children = (
+				AAD6D86B1C54903000BFC22E /* lib */,
 				AADFA2461C54397D00E3F057 /* AppDelegate.swift */,
 				AADFA2481C54397D00E3F057 /* ViewController.swift */,
 				AADFA24A1C54397D00E3F057 /* Main.storyboard */,
@@ -135,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */,
 				AADFA2491C54397D00E3F057 /* ViewController.swift in Sources */,
 				AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +296,7 @@
 				AADFA2571C54397D00E3F057 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
