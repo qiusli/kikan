@@ -10,19 +10,36 @@ import UIKit
 
 class FirstViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
-    
+
+    var minuteSlider: EFCircularSlider!
     var hourSlider: EFCircularSlider!
-//    var minuteSlider: EFCircularSlider
 
     required init?(coder aDecoder: NSCoder) {
+        let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
+        minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
         let hourSliderFrame = CGRectMake(55, 220, 210, 210)
         hourSlider = EFCircularSlider(frame: hourSliderFrame)
-        
+
         super.init(coder: aDecoder)
+        
+        minuteSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
+        minuteSlider.filledColor = UIColor(red: 155/255.0, green: 211/255.0, blue: 156/255.0, alpha: 1.0)
+        let minuteMarkingLabels = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
+        minuteSlider.innerMarkingLabels = minuteMarkingLabels
+        minuteSlider.labelFont = UIFont.systemFontOfSize(14)
+        minuteSlider.lineWidth = 8
+        minuteSlider.minimumValue = 0
+        minuteSlider.maximumValue = 60
+        minuteSlider.labelColor = UIColor(red: 76/255.0, green: 111/255.0, blue: 137/255.0, alpha: 1.0)
+        minuteSlider.handleType = CircularSliderHandleTypeDoubleCircleWithOpenCenter
+        minuteSlider.handleColor = minuteSlider.filledColor
+        minuteSlider.addTarget(self, action: "minuteDidChange:", forControlEvents: .ValueChanged)
+        
         hourSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
-        let markingLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-        hourSlider.innerMarkingLabels = markingLabels
-        hourSlider.labelFont = UIFont.systemFontOfSize(20)
+        hourSlider.filledColor = UIColor(red: 98/255.0, green: 243/255.0, blue: 252/255.0, alpha: 1.0)
+        let hourMarkingLabels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+        hourSlider.innerMarkingLabels = hourMarkingLabels
+        hourSlider.labelFont = UIFont.systemFontOfSize(14)
         hourSlider.lineWidth = 12
         hourSlider.snapToLabels = false
         hourSlider.minimumValue = 0
@@ -36,6 +53,8 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = UIColor(red: 31/255.0, green: 61/255.0, blue: 91/255.0, alpha: 1.0)
+        view.addSubview(minuteSlider)
         view.addSubview(hourSlider)
     }
 
@@ -49,5 +68,12 @@ class FirstViewController: UIViewController {
         let oldTime: NSString = timeLabel.text!
         let colonRange: NSRange = oldTime.rangeOfString(":")
         timeLabel!.text = "\(newVal):\(oldTime.substringFromIndex(colonRange.location+1))"
+    }
+    
+    func minuteDidChange(slider: EFCircularSlider) {
+        let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
+        let oldTime: NSString = timeLabel.text!
+        let colonRange: NSRange = oldTime.rangeOfString(":")
+        timeLabel!.text = "\(oldTime.substringToIndex(colonRange.location)):\(newVal)"
     }
 }
