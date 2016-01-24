@@ -151,6 +151,7 @@ class DVSCircularTimeSlider: UIControl {
     }
     
     private func getTimeInHoursFromAngle(a: Double) -> Double {
+//        print("time \(a); angle: \(a / (RadianValuesInCircle.FullCircle / 12))")
         return a / (RadianValuesInCircle.FullCircle / 12)
     }
     
@@ -251,6 +252,7 @@ class DVSCircularTimeSlider: UIControl {
             }
             let hours = floor(timeInHours)
             let minutes = (timeInHours - hours) * 60
+            print("timeInHours: \(timeInHours); hours: \(hours)")
             setTimeWithHours(Int(hours), andMinutes: Int(minutes))
             
             canHandleMoveLeft = true
@@ -275,6 +277,7 @@ class DVSCircularTimeSlider: UIControl {
         if angleEndPoint < 0 {
             return angleEndPoint + RadianValuesInCircle.FullCircle
         }
+        print("angle \(p); angleEndPoint: \(angleEndPoint)")
         return angleEndPoint
     }
 
@@ -351,5 +354,8 @@ class DVSCircularTimeSlider: UIControl {
             primaryCircleHandleBackgroundPath.fill()
         }
     }
+}
+
+extension DVSCircularTimeSlider {
     
 }
