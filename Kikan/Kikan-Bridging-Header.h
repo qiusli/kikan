@@ -13,4 +13,7 @@
 #endif /* Kikan_Bridging_Header_h */
 
 #import "EFCircularSlider.h"
-#import "EFCircularTrig.h"
+#import "YALContextMenuTableView.h"
+#import "YALContextMenuCell.h"
+#import "YALNavigationBar.h"
+

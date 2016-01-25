@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YALContextMenuTableViewDelegate {
     @IBOutlet weak var timeLabel: UILabel!
 
     var minuteSlider: EFCircularSlider!
@@ -18,6 +18,11 @@ class FirstViewController: UIViewController {
     var minute = 0, second = 0
     var timer = NSTimer()
     
+    var menuTitles = [String]()
+    var menuIcons = [UIImage]()
+    var contextMenuTableView: YALContextMenuTableView!
+    let menuCellIdentifier = "rotationCell"
+    
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
         minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
@@ -25,6 +30,9 @@ class FirstViewController: UIViewController {
         secondSlider = EFCircularSlider(frame: hourSliderFrame)
 
         super.init(coder: aDecoder)
+        
+        initiateMenuOptions()
+        navigationController?.setValue(YALNavigationBar(), forKeyPath: "navigationBar")
         
         minuteSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
         minuteSlider.filledColor = UIColor(red: 155/255.0, green: 211/255.0, blue: 156/255.0, alpha: 1.0)
@@ -79,7 +87,6 @@ class FirstViewController: UIViewController {
         timeLabel.text = "\(minuteString):\(secondString)"
         
         if minute <= 0 && second == 0 {
-            print("terminate")
             let tickAudioPlayer = timer.userInfo as! AVAudioPlayer
             timer.invalidate()
             tickAudioPlayer.stop()
@@ -128,5 +135,74 @@ class FirstViewController: UIViewController {
         let oldTime: NSString = timeLabel.text!
         let colonRange: NSRange = oldTime.rangeOfString(":")
         timeLabel!.text = "\(oldTime.substringToIndex(colonRange.location)):\(newValString)"
+    }
+    
+    func initiateMenuOptions() {
+        menuTitles = ["", "Send Message", "Like profile"]
+        menuIcons = [UIImage(named: "icn_4")!, UIImage(named: "icn_4")!, UIImage(named: "icn_4")!]
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        contextMenuTableView.reloadData()
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        contextMenuTableView.updateAlongsideRotation()
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        coordinator.animateAlongsideTransition(nil, completion: {
+            _ in
+            self.contextMenuTableView.reloadData()
+        })
+        contextMenuTableView.updateAlongsideRotation()
+    }
+    
+    @IBAction func presentMenuButtonTapped(sender: UIBarButtonItem) {
+        if contextMenuTableView == nil  {
+            print("a")
+            contextMenuTableView = YALContextMenuTableView.init(tableViewDelegateDataSource: self)
+            contextMenuTableView.animationDuration = 0.15
+            contextMenuTableView.yalDelegate = self
+            contextMenuTableView.menuItemsSide = .Right
+            contextMenuTableView.menuItemsAppearanceDirection = .FromTopToBottom
+            
+            let cellNib = UINib(nibName: "ContextMenuCell", bundle: nil)
+            contextMenuTableView.registerNib(cellNib, forCellReuseIdentifier: menuCellIdentifier)
+        }
+        contextMenuTableView.showInView(self.navigationController!.view, withEdgeInsets: UIEdgeInsetsZero, animated: true)
+    }
+    
+    func contextMenuTableView(contextMenuTableView: YALContextMenuTableView!, didDismissWithIndexPath indexPath: NSIndexPath!) {
+        print("Menu dismissed with indexpath \(indexPath)")
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let yalTableView = tableView as! YALContextMenuTableView
+        yalTableView.dismisWithIndexPath(indexPath)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 65
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuTitles.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(menuCellIdentifier, forIndexPath: indexPath) as? ContextMenuCell
+        if let cell = cell {
+            cell.backgroundColor = UIColor.clearColor()
+            cell.menuTitleLabel.text = menuTitles[indexPath.row]
+            cell.menuImageView.image = menuIcons[indexPath.row]
+        }
+        return cell!
     }
 }
