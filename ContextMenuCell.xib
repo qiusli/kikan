@@ -22,8 +22,9 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_4" translatesAutoresizingMaskIntoConstraints="NO" id="uvY-FW-m1x">
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_4" translatesAutoresizingMaskIntoConstraints="NO" id="uvY-FW-m1x">
                         <rect key="frame" x="254" y="0.0" width="66" height="66"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="uvY-FW-m1x" secondAttribute="height" multiplier="1:1" id="eWM-hq-pWb"/>
                         </constraints>
