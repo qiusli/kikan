@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FirstViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
@@ -64,24 +65,50 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func start(sender: UIButton) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime", userInfo: nil, repeats: true)
+        let audioPlayer = generateAudioPlayerWithName("rollo", andType: "wav")
+        audioPlayer.play()
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
     }
     
-    func subtractTime() {
+    func subtractTime(timer: NSTimer) {
+        second--
+        
         let minuteString = minute < 10 ? "0" + String(minute) : String(minute)
         let secondString = second < 10 ? "0" + String(second) : String(second)
         timeLabel.text = "\(minuteString):\(secondString)"
         
-        if minute == 0 && second == 0 {
+        if minute <= 0 && second == 0 {
             print("terminate")
+            let tickAudioPlayer = timer.userInfo as! AVAudioPlayer
             timer.invalidate()
+            tickAudioPlayer.stop()
+            
+            let alarmAudioPlayer = generateAudioPlayerWithName("120bpm", andType: "wav")
+            let alert = UIAlertController(title: "Time is up!", message: "Enjoy your break!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
+                _ in
+                alarmAudioPlayer.stop()
+            }))
+            presentViewController(alert, animated: true, completion:nil)
+            alarmAudioPlayer.play()
         }
         
         if second == 0 {
             second = 59
             minute--
-        } else {
-            second--
+        }
+    }
+    
+    func generateAudioPlayerWithName(name: String, andType type: String) -> AVAudioPlayer {
+        let soundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: type)!)
+        var audioPlayer: AVAudioPlayer
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: soundURL)
+            audioPlayer.numberOfLoops = -1
+            return audioPlayer
+        } catch {
+            fatalError("\(error)")
         }
     }
     

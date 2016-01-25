@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
+		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
+		AA6412231C55D2E8007076DE /* mantel.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121F1C55D2E8007076DE /* mantel.wav */; };
+		AA6412241C55D2E8007076DE /* mechanical.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA6412201C55D2E8007076DE /* mechanical.wav */; };
+		AA6412251C55D2E8007076DE /* mono.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA6412211C55D2E8007076DE /* mono.wav */; };
+		AA6412291C55D80C007076DE /* grandfather.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA6412281C55D80C007076DE /* grandfather.wav */; };
+		AA6412331C55D823007076DE /* rsilveira.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64122C1C55D823007076DE /* rsilveira.wav */; };
+		AA6412341C55D823007076DE /* alwegs.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64122D1C55D823007076DE /* alwegs.wav */; };
+		AA6412351C55D823007076DE /* sangtao.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64122E1C55D823007076DE /* sangtao.wav */; };
+		AA6412361C55D823007076DE /* fredemo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64122F1C55D823007076DE /* fredemo.wav */; };
+		AA6412371C55D823007076DE /* rewind.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA6412301C55D823007076DE /* rewind.wav */; };
+		AA6412391C55D8B7007076DE /* 120bpm.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA6412381C55D8B7007076DE /* 120bpm.wav */; };
 		AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */; };
 		AAD6D8791C54B84500BFC22E /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D8761C54B84500BFC22E /* EFCircularSlider.m */; };
 		AAD6D87A1C54B84500BFC22E /* EFCircularTrig.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D8781C54B84500BFC22E /* EFCircularTrig.m */; };
@@ -21,6 +33,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
+		AA64121F1C55D2E8007076DE /* mantel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mantel.wav; sourceTree = "<group>"; };
+		AA6412201C55D2E8007076DE /* mechanical.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mechanical.wav; sourceTree = "<group>"; };
+		AA6412211C55D2E8007076DE /* mono.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mono.wav; sourceTree = "<group>"; };
+		AA6412281C55D80C007076DE /* grandfather.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = grandfather.wav; sourceTree = "<group>"; };
+		AA64122C1C55D823007076DE /* rsilveira.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rsilveira.wav; sourceTree = "<group>"; };
+		AA64122D1C55D823007076DE /* alwegs.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alwegs.wav; sourceTree = "<group>"; };
+		AA64122E1C55D823007076DE /* sangtao.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sangtao.wav; sourceTree = "<group>"; };
+		AA64122F1C55D823007076DE /* fredemo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fredemo.wav; sourceTree = "<group>"; };
+		AA6412301C55D823007076DE /* rewind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rewind.wav; sourceTree = "<group>"; };
+		AA6412381C55D8B7007076DE /* 120bpm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 120bpm.wav; sourceTree = "<group>"; };
 		AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVSCircularTimeSlider.swift; sourceTree = "<group>"; };
 		AAD6D8751C54B84500BFC22E /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
 		AAD6D8761C54B84500BFC22E /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
@@ -41,12 +65,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA64121D1C55D2C5007076DE /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				AA6412271C55D65A007076DE /* terminate */,
+				AA6412261C55D63A007076DE /* tick */,
+			);
+			name = sound;
+			sourceTree = "<group>";
+		};
+		AA6412261C55D63A007076DE /* tick */ = {
+			isa = PBXGroup;
+			children = (
+				AA6412281C55D80C007076DE /* grandfather.wav */,
+				AA64121E1C55D2E8007076DE /* rollo.wav */,
+				AA64121F1C55D2E8007076DE /* mantel.wav */,
+				AA6412201C55D2E8007076DE /* mechanical.wav */,
+				AA6412211C55D2E8007076DE /* mono.wav */,
+			);
+			name = tick;
+			sourceTree = "<group>";
+		};
+		AA6412271C55D65A007076DE /* terminate */ = {
+			isa = PBXGroup;
+			children = (
+				AA6412381C55D8B7007076DE /* 120bpm.wav */,
+				AA64122C1C55D823007076DE /* rsilveira.wav */,
+				AA64122D1C55D823007076DE /* alwegs.wav */,
+				AA64122E1C55D823007076DE /* sangtao.wav */,
+				AA64122F1C55D823007076DE /* fredemo.wav */,
+				AA6412301C55D823007076DE /* rewind.wav */,
+			);
+			name = terminate;
+			sourceTree = "<group>";
+		};
 		AAD6D86B1C54903000BFC22E /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +122,7 @@
 		AADFA23A1C54397D00E3F057 = {
 			isa = PBXGroup;
 			children = (
+				AA64121B1C55D2A0007076DE /* AVFoundation.framework */,
 				AADFA2451C54397D00E3F057 /* Kikan */,
 				AADFA2441C54397D00E3F057 /* Products */,
 			);
@@ -79,6 +139,7 @@
 		AADFA2451C54397D00E3F057 /* Kikan */ = {
 			isa = PBXGroup;
 			children = (
+				AA64121D1C55D2C5007076DE /* sound */,
 				AAD6D86B1C54903000BFC22E /* lib */,
 				AADFA2461C54397D00E3F057 /* AppDelegate.swift */,
 				AADFA24A1C54397D00E3F057 /* Main.storyboard */,
@@ -148,9 +209,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA6412331C55D823007076DE /* rsilveira.wav in Resources */,
+				AA6412361C55D823007076DE /* fredemo.wav in Resources */,
+				AA6412291C55D80C007076DE /* grandfather.wav in Resources */,
+				AA6412371C55D823007076DE /* rewind.wav in Resources */,
+				AA6412341C55D823007076DE /* alwegs.wav in Resources */,
+				AA6412221C55D2E8007076DE /* rollo.wav in Resources */,
+				AA6412251C55D2E8007076DE /* mono.wav in Resources */,
 				AADFA2511C54397D00E3F057 /* LaunchScreen.storyboard in Resources */,
+				AA6412351C55D823007076DE /* sangtao.wav in Resources */,
+				AA6412241C55D2E8007076DE /* mechanical.wav in Resources */,
+				AA6412391C55D8B7007076DE /* 120bpm.wav in Resources */,
 				AADFA24E1C54397D00E3F057 /* Assets.xcassets in Resources */,
 				AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */,
+				AA6412231C55D2E8007076DE /* mantel.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
