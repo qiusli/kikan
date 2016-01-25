@@ -138,7 +138,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func initiateMenuOptions() {
-        menuTitles = ["", "Send Message", "Like profile"]
+        menuTitles = ["Register", "Send Message", "Like profile"]
         menuIcons = [UIImage(named: "icn_4")!, UIImage(named: "icn_4")!, UIImage(named: "icn_4")!]
     }
     
@@ -150,10 +150,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         contextMenuTableView.reloadData()
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        contextMenuTableView.updateAlongsideRotation()
-    }
+//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+//        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+//        contextMenuTableView.updateAlongsideRotation()
+//    }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
@@ -166,7 +166,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func presentMenuButtonTapped(sender: UIBarButtonItem) {
         if contextMenuTableView == nil  {
-            print("a")
+//            print("a")
             contextMenuTableView = YALContextMenuTableView.init(tableViewDelegateDataSource: self)
             contextMenuTableView.animationDuration = 0.15
             contextMenuTableView.yalDelegate = self
@@ -201,6 +201,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let cell = cell {
             cell.backgroundColor = UIColor.clearColor()
             cell.menuTitleLabel.text = menuTitles[indexPath.row]
+//            print("\(menuTitles[indexPath.row])")
             cell.menuImageView.image = menuIcons[indexPath.row]
         }
         return cell!
