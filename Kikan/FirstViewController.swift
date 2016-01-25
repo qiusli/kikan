@@ -14,6 +14,9 @@ class FirstViewController: UIViewController {
     var minuteSlider: EFCircularSlider!
     var secondSlider: EFCircularSlider!
 
+    var minute = 0, second = 0
+    var timer = NSTimer()
+    
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
         minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
@@ -59,14 +62,32 @@ class FirstViewController: UIViewController {
         view.addSubview(minuteSlider)
         view.addSubview(secondSlider)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func start(sender: UIButton) {
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime", userInfo: nil, repeats: true)
+    }
+    
+    func subtractTime() {
+        let minuteString = minute < 10 ? "0" + String(minute) : String(minute)
+        let secondString = second < 10 ? "0" + String(second) : String(second)
+        timeLabel.text = "\(minuteString):\(secondString)"
+        
+        if minute == 0 && second == 0 {
+            print("terminate")
+            timer.invalidate()
+        }
+        
+        if second == 0 {
+            second = 59
+            minute--
+        } else {
+            second--
+        }
     }
     
     func minuteDidChange(slider: EFCircularSlider) {
         let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
+        minute = newVal
         let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
         let oldTime: NSString = timeLabel.text!
         let colonRange: NSRange = oldTime.rangeOfString(":")
@@ -75,6 +96,7 @@ class FirstViewController: UIViewController {
     
     func secondDidChange(slider: EFCircularSlider) {
         let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
+        second = newVal
         let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
         let oldTime: NSString = timeLabel.text!
         let colonRange: NSRange = oldTime.rangeOfString(":")
