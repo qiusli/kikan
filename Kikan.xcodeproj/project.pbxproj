@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D61C57387D003F92E8 /* SettingsViewController.swift */; };
 		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
 		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
 		AA6412231C55D2E8007076DE /* mantel.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121F1C55D2E8007076DE /* mantel.wav */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA3108D61C57387D003F92E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
 		AA64121F1C55D2E8007076DE /* mantel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mantel.wav; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				AADFA24F1C54397D00E3F057 /* LaunchScreen.storyboard */,
 				AADFA2521C54397D00E3F057 /* Info.plist */,
 				AAD6D87F1C54BBB800BFC22E /* FirstViewController.swift */,
+				AA3108D61C57387D003F92E8 /* SettingsViewController.swift */,
 			);
 			path = Kikan;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				AA64124C1C55EBCC007076DE /* YALContextMenuTableView.m in Sources */,
 				AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */,
 				AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */,
+				AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */,
 				AAD6D8801C54BBB800BFC22E /* FirstViewController.swift in Sources */,
 				AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */,
 			);

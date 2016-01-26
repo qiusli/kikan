@@ -150,11 +150,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         contextMenuTableView.reloadData()
     }
     
-//    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-//        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-//        contextMenuTableView.updateAlongsideRotation()
-//    }
-    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         coordinator.animateAlongsideTransition(nil, completion: {
@@ -166,7 +161,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func presentMenuButtonTapped(sender: UIBarButtonItem) {
         if contextMenuTableView == nil  {
-//            print("a")
             contextMenuTableView = YALContextMenuTableView.init(tableViewDelegateDataSource: self)
             contextMenuTableView.animationDuration = 0.15
             contextMenuTableView.yalDelegate = self
@@ -180,6 +174,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func contextMenuTableView(contextMenuTableView: YALContextMenuTableView!, didDismissWithIndexPath indexPath: NSIndexPath!) {
+        if indexPath.row == 0 {
+            let settingsViewController = storyboard?.instantiateViewControllerWithIdentifier("settingsViewController") as! SettingsViewController
+            let navigationController = UINavigationController(rootViewController: settingsViewController)
+            presentViewController(navigationController, animated: true, completion: nil)
+        }
         print("Menu dismissed with indexpath \(indexPath)")
     }
     
