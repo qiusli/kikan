@@ -17,7 +17,7 @@ class KkListCloseButton: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.backgroundColor = UIColor.redColor()
+        self.backgroundColor = UIColor.clearColor()
     }
     
     

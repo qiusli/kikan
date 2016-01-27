@@ -91,7 +91,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             timer.invalidate()
             tickAudioPlayer.stop()
             
-            let alarmAudioPlayer = generateAudioPlayerWithName("120bpm", andType: "wav")
+            let alarmAudioPlayer = generateAudioPlayerWithName("fredemo", andType: "wav")
             let alert = UIAlertController(title: "Time is up!", message: "Enjoy your break!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
                 _ in
@@ -200,7 +200,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let cell = cell {
             cell.backgroundColor = UIColor.clearColor()
             cell.menuTitleLabel.text = menuTitles[indexPath.row]
-//            print("\(menuTitles[indexPath.row])")
             cell.menuImageView.image = menuIcons[indexPath.row]
         }
         return cell!
