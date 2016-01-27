@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YALContextMenuTableViewDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate {
     @IBOutlet weak var timeLabel: UILabel!
 
     var minuteSlider: EFCircularSlider!
@@ -22,6 +22,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var menuIcons = [UIImage]()
     var contextMenuTableView: YALContextMenuTableView!
     let menuCellIdentifier = "rotationCell"
+    
+    var tickSound = "grandfather"
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -73,7 +75,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func start(sender: UIButton) {
-        let audioPlayer = generateAudioPlayerWithName("rollo", andType: "wav")
+        let audioPlayer = generateAudioPlayerWithName(tickSound, andType: "wav")
         audioPlayer.play()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
@@ -176,10 +178,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func contextMenuTableView(contextMenuTableView: YALContextMenuTableView!, didDismissWithIndexPath indexPath: NSIndexPath!) {
         if indexPath.row == 0 {
             let settingsViewController = storyboard?.instantiateViewControllerWithIdentifier("settingsViewController") as! SettingsViewController
+            settingsViewController.delegate = self
             let navigationController = UINavigationController(rootViewController: settingsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         }
-        print("Menu dismissed with indexpath \(indexPath)")
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -203,5 +205,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.menuImageView.image = menuIcons[indexPath.row]
         }
         return cell!
+    }
+    
+    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound sound: String) {
+        tickSound = sound
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -9,10 +9,17 @@
 import UIKit
 import AVFoundation
 
+protocol SettingsViewControllerDelegate: class {
+    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound sound: String)
+}
+
 class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     var kkListActionSheet: KkListActionSheet?
     var tickSounds: [String]!
     var audioPlayer: AVAudioPlayer!
+    var tickSoundPicked: String!
+    
+    weak var delegate: FirstViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +30,7 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     }
     
     @IBAction func done() {
-        dismissViewControllerAnimated(true, completion: nil)
+        delegate?.settingsViewController(self, didFinishPickingTickSound: tickSoundPicked)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -49,7 +56,8 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     }
     
     func kkTableView(tableView: UITableView, selectIndex indexPath: NSIndexPath) {
-        audioPlayer = generateAudioPlayerWithName(tickSounds![indexPath.row])
+        tickSoundPicked = tickSounds[indexPath.row]
+        audioPlayer = generateAudioPlayerWithName(tickSoundPicked)
         audioPlayer.play()
     }
     
