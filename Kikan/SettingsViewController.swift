@@ -50,7 +50,6 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     
     func kkTableView(tableView: UITableView, selectIndex indexPath: NSIndexPath) {
         audioPlayer = generateAudioPlayerWithName(tickSounds![indexPath.row])
-        print("\(audioPlayer)")
         audioPlayer.play()
     }
     
