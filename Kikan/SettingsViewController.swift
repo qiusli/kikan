@@ -8,30 +8,39 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
-
+class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
+    var kkListActionSheet: KkListActionSheet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        kkListActionSheet = KkListActionSheet.createInit(self)
+        kkListActionSheet?.delegate = self
     }
     
     @IBAction func done() {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        kkListActionSheet?.showHide()
     }
-    */
-
+    
+    // MARK: KkListActionSheet Delegate Method
+    func kkTableView(tableView: UITableView, rowsInSection section: NSInteger) -> NSInteger {
+        return 20
+    }
+    
+    func kkTableView(tableView: UITableView, currentIndx indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdenfier = "cell"
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdenfier)
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdenfier)
+        }
+        
+        cell?.textLabel?.text = String(format: "%ld", indexPath.row)
+        
+        return cell!
+    }
 }

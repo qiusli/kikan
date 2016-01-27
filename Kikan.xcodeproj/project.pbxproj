@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D61C57387D003F92E8 /* SettingsViewController.swift */; };
 		AA3108D91C57425B003F92E8 /* TickSoundPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D81C57425B003F92E8 /* TickSoundPickerViewController.swift */; };
+		AA3108DF1C58697C003F92E8 /* KkListActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */; };
+		AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */; };
+		AA3108E11C58697C003F92E8 /* KkListCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */; };
 		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
 		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
 		AA6412231C55D2E8007076DE /* mantel.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121F1C55D2E8007076DE /* mantel.wav */; };
@@ -42,6 +45,9 @@
 /* Begin PBXFileReference section */
 		AA3108D61C57387D003F92E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA3108D81C57425B003F92E8 /* TickSoundPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickSoundPickerViewController.swift; sourceTree = "<group>"; };
+		AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KkListActionSheet.xib; sourceTree = "<group>"; };
+		AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KkListActionSheet.swift; sourceTree = "<group>"; };
+		AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KkListCloseButton.swift; sourceTree = "<group>"; };
 		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
 		AA64121F1C55D2E8007076DE /* mantel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mantel.wav; sourceTree = "<group>"; };
@@ -90,6 +96,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA3108E21C586987003F92E8 /* KkListActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */,
+				AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */,
+				AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */,
+			);
+			name = KkListActionSheet;
+			sourceTree = "<group>";
+		};
 		AA64121D1C55D2C5007076DE /* sound */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +185,7 @@
 		AAD6D86B1C54903000BFC22E /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				AA3108E21C586987003F92E8 /* KkListActionSheet */,
 				AA64123E1C55EB9C007076DE /* YALContextMenu */,
 				AA64123B1C55EA1A007076DE /* DVSCircularTimeSlider */,
 				AA64123A1C55E9E5007076DE /* EFCircularSlider */,
@@ -285,6 +302,7 @@
 				AADFA24E1C54397D00E3F057 /* Assets.xcassets in Resources */,
 				AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */,
 				AA6412231C55D2E8007076DE /* mantel.wav in Resources */,
+				AA3108DF1C58697C003F92E8 /* KkListActionSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,10 +319,12 @@
 				AA3108D91C57425B003F92E8 /* TickSoundPickerViewController.swift in Sources */,
 				AAD6D87C1C54B8A000BFC22E /* EFCircularSlider.h in Sources */,
 				AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */,
+				AA3108E11C58697C003F92E8 /* KkListCloseButton.swift in Sources */,
 				AA64124B1C55EBCC007076DE /* UIView+YALConstraints.m in Sources */,
 				AAD6D8791C54B84500BFC22E /* EFCircularSlider.m in Sources */,
 				AA64124C1C55EBCC007076DE /* YALContextMenuTableView.m in Sources */,
 				AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */,
+				AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */,
 				AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */,
 				AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */,
 				AAD6D8801C54BBB800BFC22E /* FirstViewController.swift in Sources */,
