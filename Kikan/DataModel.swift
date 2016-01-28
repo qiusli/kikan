@@ -9,10 +9,16 @@
 import Foundation
 
 class DataModel {
-    var userSelections = UserSelections(tickSound: "grandfather")
+    var userSelections = UserSelections(tickSound: "grandfather", alarmSound: "rewind")
     
     init() {
         loadUserSelections()
+//        do {
+//            try NSFileManager.defaultManager().removeItemAtPath(dataFilePath())
+//        }
+//        catch {
+//            
+//        }
     }
     
     func documentDirectory() -> String {

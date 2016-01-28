@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol SettingsViewControllerDelegate: class {
-    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound sound: String)
+    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound tickSound: String, andAlarmSound alarmSound: String)
 }
 
 class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
@@ -35,7 +35,7 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     }
     
     @IBAction func done() {
-        delegate?.settingsViewController(self, didFinishPickingTickSound: tickSoundPicked)
+        delegate?.settingsViewController(self, didFinishPickingTickSound: tickSoundPicked, andAlarmSound: alarmSoundPicked)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

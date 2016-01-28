@@ -93,7 +93,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             timer.invalidate()
             tickAudioPlayer.stop()
             
-            let alarmAudioPlayer = generateAudioPlayerWithName("fredemo", andType: "wav")
+            let alarmAudioPlayer = generateAudioPlayerWithName(dataModel.userSelections.alarmSound, andType: "wav")
             let alert = UIAlertController(title: "Time is up!", message: "Enjoy your break!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
                 _ in
@@ -179,6 +179,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if indexPath.row == 0 {
             let settingsViewController = storyboard?.instantiateViewControllerWithIdentifier("settingsViewController") as! SettingsViewController
             settingsViewController.delegate = self
+            settingsViewController.tickSoundPicked = dataModel.userSelections.tickSound
+            settingsViewController.alarmSoundPicked = dataModel.userSelections.alarmSound
             let navigationController = UINavigationController(rootViewController: settingsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         }
@@ -207,8 +209,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell!
     }
     
-    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound sound: String) {
-        dataModel.userSelections.tickSound = sound
+    func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound tickSound: String, andAlarmSound alarmSound: String) {
+        dataModel.userSelections.tickSound = tickSound
+        dataModel.userSelections.alarmSound = alarmSound
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
