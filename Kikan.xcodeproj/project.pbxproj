@@ -115,7 +115,7 @@
 		AA64121D1C55D2C5007076DE /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				AA6412271C55D65A007076DE /* terminate */,
+				AA6412271C55D65A007076DE /* alarm */,
 				AA6412261C55D63A007076DE /* tick */,
 			);
 			name = sound;
@@ -133,7 +133,7 @@
 			name = tick;
 			sourceTree = "<group>";
 		};
-		AA6412271C55D65A007076DE /* terminate */ = {
+		AA6412271C55D65A007076DE /* alarm */ = {
 			isa = PBXGroup;
 			children = (
 				AA6412381C55D8B7007076DE /* 120bpm.wav */,
@@ -143,7 +143,7 @@
 				AA64122F1C55D823007076DE /* fredemo.wav */,
 				AA6412301C55D823007076DE /* rewind.wav */,
 			);
-			name = terminate;
+			name = alarm;
 			sourceTree = "<group>";
 		};
 		AA64123A1C55E9E5007076DE /* EFCircularSlider */ = {

@@ -16,10 +16,14 @@ protocol SettingsViewControllerDelegate: class {
 class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     var kkListActionSheet: KkListActionSheet?
     var tickSounds: [String]!
+    var alarmSounds: [String]!
     var audioPlayer: AVAudioPlayer!
     var tickSoundPicked: String!
+    var alarmSoundPicked: String!
     
     weak var delegate: FirstViewController?
+    
+    var selectedSection: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +31,7 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
         kkListActionSheet = KkListActionSheet.createInit(self)
         kkListActionSheet?.delegate = self
         tickSounds = ["grandfather", "rollo", "mantel", "mechanical", "mono"]
+        alarmSounds = ["120bpm", "rsilveira", "alwegs", "sangtao", "fredemo", "rewind"]
     }
     
     @IBAction func done() {
@@ -34,12 +39,21 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedSection = indexPath.section
+        kkListActionSheet?.kkTableView.reloadData()
         kkListActionSheet?.showHide()
     }
     
     // MARK: KkListActionSheet Delegate Method
     func kkTableView(tableView: UITableView, rowsInSection section: NSInteger) -> NSInteger {
-        return tickSounds!.count
+        var row: Int!
+        switch selectedSection {
+        case 0:
+            row = tickSounds!.count
+        default:
+            row = alarmSounds!.count
+        }
+        return row
     }
     
     func kkTableView(tableView: UITableView, currentIndx indexPath: NSIndexPath) -> UITableViewCell {
@@ -50,14 +64,25 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
             cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdenfier)
         }
         
-        cell?.textLabel?.text = tickSounds![indexPath.row]
+        switch selectedSection {
+        case 0:
+            cell?.textLabel?.text = tickSounds![indexPath.row]
+        default:
+            cell?.textLabel?.text = alarmSounds![indexPath.row]
+        }
         
         return cell!
     }
     
     func kkTableView(tableView: UITableView, selectIndex indexPath: NSIndexPath) {
-        tickSoundPicked = tickSounds[indexPath.row]
-        audioPlayer = generateAudioPlayerWithName(tickSoundPicked)
+        if selectedSection == 0 {
+            tickSoundPicked = tickSounds[indexPath.row]
+            audioPlayer = generateAudioPlayerWithName(tickSoundPicked)
+        } else if selectedSection == 1 {
+            alarmSoundPicked = alarmSounds[indexPath.row]
+            audioPlayer = generateAudioPlayerWithName(alarmSoundPicked)
+        }
+        
         audioPlayer.play()
     }
     
