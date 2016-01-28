@@ -10,6 +10,8 @@ import UIKit
 import AVFoundation
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate {
+    var dataModel: DataModel!
+    
     @IBOutlet weak var timeLabel: UILabel!
 
     var minuteSlider: EFCircularSlider!
@@ -22,8 +24,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var menuIcons = [UIImage]()
     var contextMenuTableView: YALContextMenuTableView!
     let menuCellIdentifier = "rotationCell"
-    
-    var tickSound = "grandfather"
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -75,7 +75,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func start(sender: UIButton) {
-        let audioPlayer = generateAudioPlayerWithName(tickSound, andType: "wav")
+        let audioPlayer = generateAudioPlayerWithName(dataModel.userSelections.tickSound, andType: "wav")
         audioPlayer.play()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
@@ -208,7 +208,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound sound: String) {
-        tickSound = sound
+        dataModel.userSelections.tickSound = sound
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
