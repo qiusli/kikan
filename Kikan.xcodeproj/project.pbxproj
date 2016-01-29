@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11BC2300DD26153084A67B24 /* Pods_Kikan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */; };
 		AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D61C57387D003F92E8 /* SettingsViewController.swift */; };
 		AA3108DF1C58697C003F92E8 /* KkListActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */; };
 		AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */; };
@@ -15,6 +16,7 @@
 		AA3108E61C588B57003F92E8 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108E51C588B57003F92E8 /* AudioCell.swift */; };
 		AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF71C58C0BA00AAE30A /* DataModel.swift */; };
 		AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */; };
+		AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */; };
 		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
 		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
 		AA6412231C55D2E8007076DE /* mantel.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121F1C55D2E8007076DE /* mantel.wav */; };
@@ -32,7 +34,6 @@
 		AA6412541C5630EE007076DE /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6412531C5630EE007076DE /* ContextMenuCell.xib */; };
 		AA6412561C56313B007076DE /* ContextMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6412551C56313B007076DE /* ContextMenuCell.swift */; };
 		AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6412591C563CC2007076DE /* YALNavigationBar.m */; };
-		AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */; };
 		AAD6D8791C54B84500BFC22E /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D8761C54B84500BFC22E /* EFCircularSlider.m */; };
 		AAD6D87A1C54B84500BFC22E /* EFCircularTrig.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D8781C54B84500BFC22E /* EFCircularTrig.m */; };
 		AAD6D87C1C54B8A000BFC22E /* EFCircularSlider.h in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D8751C54B84500BFC22E /* EFCircularSlider.h */; };
@@ -46,6 +47,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2828A91CB39EE58A7EF352EC /* Pods-Kikan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Kikan/Pods-Kikan.debug.xcconfig"; sourceTree = "<group>"; };
+		8F6956FFA0B2CA79FDD14B89 /* Pods-Kikan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kikan/Pods-Kikan.release.xcconfig"; sourceTree = "<group>"; };
+		A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3108D61C57387D003F92E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KkListActionSheet.xib; sourceTree = "<group>"; };
 		AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KkListActionSheet.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 		AA3108E51C588B57003F92E8 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		AA32BCF71C58C0BA00AAE30A /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelections.swift; sourceTree = "<group>"; };
+		AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
 		AA64121F1C55D2E8007076DE /* mantel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mantel.wav; sourceTree = "<group>"; };
@@ -75,7 +80,6 @@
 		AA6412551C56313B007076DE /* ContextMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuCell.swift; sourceTree = "<group>"; };
 		AA6412581C563CC2007076DE /* YALNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALNavigationBar.h; sourceTree = "<group>"; };
 		AA6412591C563CC2007076DE /* YALNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALNavigationBar.m; sourceTree = "<group>"; };
-		AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DVSCircularTimeSlider.swift; sourceTree = "<group>"; };
 		AAD6D8751C54B84500BFC22E /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
 		AAD6D8761C54B84500BFC22E /* EFCircularSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EFCircularSlider.m; sourceTree = "<group>"; };
 		AAD6D8771C54B84500BFC22E /* EFCircularTrig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularTrig.h; sourceTree = "<group>"; };
@@ -96,12 +100,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */,
+				11BC2300DD26153084A67B24 /* Pods_Kikan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E2E67DBB61C4077EA66B23C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA3108E21C586987003F92E8 /* KkListActionSheet */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,14 +170,6 @@
 			name = EFCircularSlider;
 			sourceTree = "<group>";
 		};
-		AA64123B1C55EA1A007076DE /* DVSCircularTimeSlider */ = {
-			isa = PBXGroup;
-			children = (
-				AAD6D86C1C54904700BFC22E /* DVSCircularTimeSlider.swift */,
-			);
-			name = DVSCircularTimeSlider;
-			sourceTree = "<group>";
-		};
 		AA64123E1C55EB9C007076DE /* YALContextMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +200,6 @@
 			children = (
 				AA3108E21C586987003F92E8 /* KkListActionSheet */,
 				AA64123E1C55EB9C007076DE /* YALContextMenu */,
-				AA64123B1C55EA1A007076DE /* DVSCircularTimeSlider */,
 				AA64123A1C55E9E5007076DE /* EFCircularSlider */,
 				AAD6D87B1C54B88000BFC22E /* Kikan-Bridging-Header.h */,
 			);
@@ -208,6 +212,8 @@
 				AA64121B1C55D2A0007076DE /* AVFoundation.framework */,
 				AADFA2451C54397D00E3F057 /* Kikan */,
 				AADFA2441C54397D00E3F057 /* Products */,
+				C840C695322FC2F120D1D1DF /* Pods */,
+				9E2E67DBB61C4077EA66B23C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,8 +240,18 @@
 				AA3108D61C57387D003F92E8 /* SettingsViewController.swift */,
 				AA32BCF71C58C0BA00AAE30A /* DataModel.swift */,
 				AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */,
+				AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */,
 			);
 			path = Kikan;
+			sourceTree = "<group>";
+		};
+		C840C695322FC2F120D1D1DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2828A91CB39EE58A7EF352EC /* Pods-Kikan.debug.xcconfig */,
+				8F6956FFA0B2CA79FDD14B89 /* Pods-Kikan.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +261,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AADFA2551C54397D00E3F057 /* Build configuration list for PBXNativeTarget "Kikan" */;
 			buildPhases = (
+				04172B4DC3B8A41E73591CDC /* Check Pods Manifest.lock */,
 				AADFA23F1C54397D00E3F057 /* Sources */,
 				AADFA2401C54397D00E3F057 /* Frameworks */,
 				AADFA2411C54397D00E3F057 /* Resources */,
+				0BEA41C0ED38945CC76E444A /* Embed Pods Frameworks */,
+				56D5A05AE8D0C7D5D0C08BB7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -318,6 +337,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		04172B4DC3B8A41E73591CDC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0BEA41C0ED38945CC76E444A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kikan/Pods-Kikan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56D5A05AE8D0C7D5D0C08BB7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Kikan/Pods-Kikan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AADFA23F1C54397D00E3F057 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -327,13 +394,13 @@
 				AAD6D87D1C54B8A000BFC22E /* EFCircularTrig.h in Sources */,
 				AAD6D87A1C54B84500BFC22E /* EFCircularTrig.m in Sources */,
 				AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */,
+				AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */,
 				AAD6D87C1C54B8A000BFC22E /* EFCircularSlider.h in Sources */,
 				AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */,
 				AA3108E11C58697C003F92E8 /* KkListCloseButton.swift in Sources */,
 				AA64124B1C55EBCC007076DE /* UIView+YALConstraints.m in Sources */,
 				AAD6D8791C54B84500BFC22E /* EFCircularSlider.m in Sources */,
 				AA64124C1C55EBCC007076DE /* YALContextMenuTableView.m in Sources */,
-				AAD6D86D1C54904700BFC22E /* DVSCircularTimeSlider.swift in Sources */,
 				AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */,
 				AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */,
 				AA3108E61C588B57003F92E8 /* AudioCell.swift in Sources */,
@@ -449,6 +516,7 @@
 		};
 		AADFA2561C54397D00E3F057 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2828A91CB39EE58A7EF352EC /* Pods-Kikan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -463,6 +531,7 @@
 		};
 		AADFA2571C54397D00E3F057 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F6956FFA0B2CA79FDD14B89 /* Pods-Kikan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -55,7 +55,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         secondSlider.innerMarkingLabels = hourMarkingLabels
         secondSlider.labelFont = UIFont.systemFontOfSize(14)
         secondSlider.lineWidth = 12
-//        secondSlider.snapToLabels = true
         secondSlider.minimumValue = 0
         secondSlider.maximumValue = 60
         secondSlider.labelColor = UIColor(red: 127/255.0, green: 229/255.0, blue: 255/255.0, alpha: 1.0)
@@ -181,6 +180,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             settingsViewController.delegate = self
             settingsViewController.tickSoundPicked = dataModel.userSelections.tickSound
             settingsViewController.alarmSoundPicked = dataModel.userSelections.alarmSound
+            let navigationController = UINavigationController(rootViewController: settingsViewController)
+            presentViewController(navigationController, animated: true, completion: nil)
+        } else if indexPath.row == 1 {
+            let settingsViewController = storyboard?.instantiateViewControllerWithIdentifier("chartsViewController") as! ChartsViewController
             let navigationController = UINavigationController(rootViewController: settingsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         }
