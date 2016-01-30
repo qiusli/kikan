@@ -17,7 +17,6 @@
 		AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF71C58C0BA00AAE30A /* DataModel.swift */; };
 		AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */; };
 		AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */; };
-		AA32BD311C5B363100AAE30A /* ExampleDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD301C5B363100AAE30A /* ExampleDefaults.swift */; };
 		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
 		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
 		AA6412231C55D2E8007076DE /* mantel.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121F1C55D2E8007076DE /* mantel.wav */; };
@@ -60,7 +59,6 @@
 		AA32BCF71C58C0BA00AAE30A /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelections.swift; sourceTree = "<group>"; };
 		AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
-		AA32BD301C5B363100AAE30A /* ExampleDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleDefaults.swift; sourceTree = "<group>"; };
 		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
 		AA64121F1C55D2E8007076DE /* mantel.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mantel.wav; sourceTree = "<group>"; };
@@ -243,7 +241,6 @@
 				AA32BCF71C58C0BA00AAE30A /* DataModel.swift */,
 				AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */,
 				AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */,
-				AA32BD301C5B363100AAE30A /* ExampleDefaults.swift */,
 			);
 			path = Kikan;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA32BD311C5B363100AAE30A /* ExampleDefaults.swift in Sources */,
 				AA6412561C56313B007076DE /* ContextMenuCell.swift in Sources */,
 				AAD6D87D1C54B8A000BFC22E /* EFCircularTrig.h in Sources */,
 				AAD6D87A1C54B84500BFC22E /* EFCircularTrig.m in Sources */,

@@ -13,12 +13,6 @@ class DataModel {
     
     init() {
         loadUserSelections()
-//        do {
-//            try NSFileManager.defaultManager().removeItemAtPath(dataFilePath())
-//        }
-//        catch {
-//            
-//        }
     }
     
     func documentDirectory() -> String {

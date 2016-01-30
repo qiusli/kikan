@@ -9,13 +9,31 @@
 import UIKit
 import PNChart
 
-class ChartsViewController: UIViewController {
+class ChartsViewController: UITableViewController {
     override func viewDidLoad() {
-        configureLineChart()
     }
     
-    func configureLineChart() {
-        let lineChart = PNLineChart.init(frame: CGRectMake(0, 135, UIScreen.mainScreen().bounds.size.width, 200))
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("chartsCell", forIndexPath: indexPath)
+        cell.contentView.addSubview(configureLineChart())
+        cell.backgroundColor = UIColor.redColor()
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 210
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func configureLineChart() -> PNLineChart {
+        let lineChart = PNLineChart.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.grayColor()
@@ -35,7 +53,7 @@ class ChartsViewController: UIViewController {
         lineChart.chartData = [data01]
         lineChart.strokeChart()
         
-        view.addSubview(lineChart)
+        return lineChart
     }
     
     @IBAction func done() {
