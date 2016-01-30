@@ -1,5 +1,5 @@
 use_frameworks!
 
 target 'Kikan' do
-  pod 'SwiftCharts', '~> 0.3'
+  pod 'PNChartSwift',:git => 'https://github.com/kevinzhow/PNChart-Swift.git'
 end
