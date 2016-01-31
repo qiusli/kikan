@@ -41,7 +41,7 @@ class ChartsViewController: UITableViewController {
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.grayColor()
 
-        var data01Array = [CGFloat]()
+        var dataArray = [CGFloat]()
         var dateLabels = [String]()
         for (date, times) in date_times {
             let dayStr = date[date.endIndex.advancedBy(-2)..<date.endIndex]
@@ -53,23 +53,23 @@ class ChartsViewController: UITableViewController {
             
             let label = "\(m)\(dayInt!)"
             dateLabels.append(label)
-            data01Array.append(CGFloat(times))
+            dataArray.append(CGFloat(times))
         }
         lineChart.xLabels = dateLabels
         lineChart.showCoordinateAxis = true
         
 //        let data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
         
-        let data01:PNLineChartData = PNLineChartData()
-        data01.color = UIColor.greenColor()
-        data01.itemCount = UInt(lineChart.xLabels.count)
-        data01.inflexionPointStyle = PNLineChartPointStyle.Circle
-        data01.getData = ({(index: UInt) -> PNLineChartDataItem in
-            let yValue: CGFloat = CGFloat(data01Array[Int(index)])
+        let data:PNLineChartData = PNLineChartData()
+        data.color = UIColor.greenColor()
+        data.itemCount = UInt(lineChart.xLabels.count)
+        data.inflexionPointStyle = PNLineChartPointStyle.Circle
+        data.getData = ({(index: UInt) -> PNLineChartDataItem in
+            let yValue: CGFloat = CGFloat(dataArray[Int(index)])
             let item = PNLineChartDataItem(y: yValue)
             return item
         })
-        lineChart.chartData = [data01]
+        lineChart.chartData = [data]
         lineChart.strokeChart()
         
         return lineChart
