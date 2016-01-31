@@ -25,6 +25,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var contextMenuTableView: YALContextMenuTableView!
     let menuCellIdentifier = "rotationCell"
     
+    var audioPlayer: AVAudioPlayer?
+    
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
         minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
@@ -74,11 +76,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func start(sender: UIButton) {
-        let audioPlayer = generateAudioPlayerWithName(dataModel.userSelections.tickSound, andType: "wav")
+        let audioPlayer = configureAudioPlayerWithName(dataModel.userSelections.tickSound, andType: "wav")
         audioPlayer.play()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
         dataModel.addUseDates(NSDate())
+    }
+    
+    @IBAction func stop(sender: UIButton) {
+        timer.invalidate()
+        audioPlayer?.stop()
+        timeLabel.text = "00:00"
     }
     
     func subtractTime(timer: NSTimer) {
@@ -93,14 +101,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             timer.invalidate()
             tickAudioPlayer.stop()
             
-            let alarmAudioPlayer = generateAudioPlayerWithName(dataModel.userSelections.alarmSound, andType: "wav")
+            configureAudioPlayerWithName(dataModel.userSelections.alarmSound, andType: "wav")
             let alert = UIAlertController(title: "Time is up!", message: "Enjoy your break!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {
                 _ in
-                alarmAudioPlayer.stop()
+                self.audioPlayer!.stop()
             }))
             presentViewController(alert, animated: true, completion:nil)
-            alarmAudioPlayer.play()
+            audioPlayer!.play()
         }
         
         if second == 0 {
@@ -109,13 +117,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func generateAudioPlayerWithName(name: String, andType type: String) -> AVAudioPlayer {
+    func configureAudioPlayerWithName(name: String, andType type: String) -> AVAudioPlayer {
         let soundURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(name, ofType: type)!)
-        var audioPlayer: AVAudioPlayer
         do {
             try audioPlayer = AVAudioPlayer(contentsOfURL: soundURL)
-            audioPlayer.numberOfLoops = -1
-            return audioPlayer
+            audioPlayer!.numberOfLoops = -1
+            return audioPlayer!
         } catch {
             fatalError("\(error)")
         }
@@ -140,7 +147,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func initiateMenuOptions() {
-        menuTitles = ["Register", "Send Message", "Like profile"]
+        menuTitles = ["Settings", "Charts", "Like profile"]
         menuIcons = [UIImage(named: "icn_4")!, UIImage(named: "icn_4")!, UIImage(named: "icn_4")!]
     }
     
