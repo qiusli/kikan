@@ -78,6 +78,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         audioPlayer.play()
         
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
+        dataModel.addUseDates(NSDate())
     }
     
     func subtractTime(timer: NSTimer) {
@@ -183,8 +184,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let navigationController = UINavigationController(rootViewController: settingsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         } else if indexPath.row == 1 {
-            let settingsViewController = storyboard?.instantiateViewControllerWithIdentifier("chartsViewController") as! ChartsViewController
-            let navigationController = UINavigationController(rootViewController: settingsViewController)
+            let chartsViewController = storyboard?.instantiateViewControllerWithIdentifier("chartsViewController") as! ChartsViewController
+            chartsViewController.dataModel = dataModel
+            let navigationController = UINavigationController(rootViewController: chartsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         }
     }

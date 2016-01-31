@@ -10,8 +10,7 @@ import UIKit
 import PNChart
 
 class ChartsViewController: UITableViewController {
-    override func viewDidLoad() {
-    }
+    var dataModel: DataModel?
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -33,14 +32,21 @@ class ChartsViewController: UITableViewController {
     }
     
     func configureLineChart() -> PNLineChart {
+        let useDates = dataModel!.useDates
         let lineChart = PNLineChart.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.grayColor()
-        lineChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
+        var labels = [String]()
+        for date in useDates {
+            labels.append(String(date.getDay()))
+        }
+        lineChart.xLabels = labels
         lineChart.showCoordinateAxis = true
         
         let data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
+//        let data01Array: [CGFloat]
+        
         let data01:PNLineChartData = PNLineChartData()
         data01.color = UIColor.greenColor()
         data01.itemCount = UInt(lineChart.xLabels.count)

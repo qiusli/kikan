@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        dataModel.saveUserSelections()
+        dataModel.saveUserInfo()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        dataModel.saveUserSelections()
+        dataModel.saveUserInfo()
     }
 }
 
