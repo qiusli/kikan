@@ -20,8 +20,15 @@ class ChartsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("chartsCell", forIndexPath: indexPath)
-        cell.contentView.addSubview(configureLineChart())
-        cell.backgroundColor = UIColor.redColor()
+        if indexPath.row == 2 {
+            cell.contentView.addSubview(configureBarChart())
+        } else {
+            cell.contentView.addSubview(configureLineChart())
+            cell.backgroundColor = UIColor.redColor()
+        }
+        
+        
+        
         return cell
     }
     
@@ -35,14 +42,46 @@ class ChartsViewController: UITableViewController {
     
     // from 7 days before to now currently
     func configureLineChart() -> PNLineChart {
-        let date_times = dataModel!.date_times
         let lineChart = PNLineChart.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.grayColor()
 
-        var dataArray = [CGFloat]()
+        let info = configureDataAndLabel()
+        lineChart.xLabels = info.dateLabels
+        lineChart.showCoordinateAxis = true
+        
+        let data:PNLineChartData = PNLineChartData()
+        data.color = UIColor.greenColor()
+        data.itemCount = UInt(lineChart.xLabels.count)
+        data.inflexionPointStyle = PNLineChartPointStyle.Circle
+        data.getData = ({(index: UInt) -> PNLineChartDataItem in
+            let yValue: CGFloat = CGFloat(info.dataArray[Int(index)])
+            let item = PNLineChartDataItem(y: yValue)
+            return item
+        })
+        lineChart.chartData = [data]
+        lineChart.strokeChart()
+        
+        return lineChart
+    }
+    
+    func configureBarChart() -> PNBarChart {
+        
+        let barChart = PNBarChart(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
+        barChart.barBackgroundColor = UIColor.clearColor()
+        
+        let info = configureDataAndLabel()
+        barChart.xLabels = info.dateLabels
+        barChart.yValues = info.dataArray
+        barChart.strokeChart()
+        return barChart
+    }
+    
+    func configureDataAndLabel() -> (dateLabels: [String], dataArray: [Int]) {
         var dateLabels = [String]()
+        var dataArray = [Int]()
+        let date_times = dataModel!.date_times
         for (date, times) in date_times {
             let dayStr = date[date.endIndex.advancedBy(-2)..<date.endIndex]
             let dayInt = Int(dayStr)
@@ -53,26 +92,9 @@ class ChartsViewController: UITableViewController {
             
             let label = "\(m)\(dayInt!)"
             dateLabels.append(label)
-            dataArray.append(CGFloat(times))
+            dataArray.append(times)
         }
-        lineChart.xLabels = dateLabels
-        lineChart.showCoordinateAxis = true
-        
-//        let data01Array: [CGFloat] = [60.1, 160.1, 126.4, 262.2, 186.2, 127.2, 176.2]
-        
-        let data:PNLineChartData = PNLineChartData()
-        data.color = UIColor.greenColor()
-        data.itemCount = UInt(lineChart.xLabels.count)
-        data.inflexionPointStyle = PNLineChartPointStyle.Circle
-        data.getData = ({(index: UInt) -> PNLineChartDataItem in
-            let yValue: CGFloat = CGFloat(dataArray[Int(index)])
-            let item = PNLineChartDataItem(y: yValue)
-            return item
-        })
-        lineChart.chartData = [data]
-        lineChart.strokeChart()
-        
-        return lineChart
+        return (dateLabels, dataArray)
     }
     
     @IBAction func done() {
