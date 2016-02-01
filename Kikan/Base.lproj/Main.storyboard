@@ -119,6 +119,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="startButton" destination="ylL-lL-iSs" id="eKy-OC-lhg"/>
+                        <outlet property="stopButton" destination="NMe-0S-aJB" id="Gmu-Os-6j6"/>
                         <outlet property="timeLabel" destination="b8C-ko-q1A" id="AyK-d2-5vH"/>
                     </connections>
                 </viewController>

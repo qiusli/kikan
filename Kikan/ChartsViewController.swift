@@ -27,8 +27,6 @@ class ChartsViewController: UITableViewController {
             cell.backgroundColor = UIColor.redColor()
         }
         
-        
-        
         return cell
     }
     
@@ -61,8 +59,22 @@ class ChartsViewController: UITableViewController {
             return item
         })
         lineChart.chartData = [data]
-        lineChart.strokeChart()
         
+        if info.incompleteDataArray.count > 0 {
+            let incomplete_data:PNLineChartData = PNLineChartData()
+            incomplete_data.color = UIColor.redColor()
+            incomplete_data.itemCount = UInt(lineChart.xLabels.count)
+            incomplete_data.inflexionPointStyle = PNLineChartPointStyle.Circle
+            incomplete_data.getData = ({(index: UInt) -> PNLineChartDataItem in
+                let yValue: CGFloat = CGFloat(info.incompleteDataArray[Int(index)])
+                    let item = PNLineChartDataItem(y: yValue)
+                    return item
+                }
+            )
+            lineChart.chartData.append(incomplete_data)
+        }
+        
+        lineChart.strokeChart()
         return lineChart
     }
     
@@ -78,10 +90,10 @@ class ChartsViewController: UITableViewController {
         return barChart
     }
     
-    func configureDataAndLabel() -> (dateLabels: [String], dataArray: [Int]) {
+    func configureDataAndLabel() -> (dateLabels: [String], dataArray: [Int], incompleteDataArray: [Int]) {
         var dateLabels = [String]()
-        var dataArray = [Int]()
-        let date_times = dataModel!.date_times
+        var dataArray = [Int](), incompleteDataArray = [Int]()
+        let date_times = dataModel!.date_times, incomplete_date_times = dataModel!.incomplete_date_times
         for (date, times) in date_times {
             let dayStr = date[date.endIndex.advancedBy(-2)..<date.endIndex]
             let dayInt = Int(dayStr)
@@ -93,8 +105,15 @@ class ChartsViewController: UITableViewController {
             let label = "\(m)\(dayInt!)"
             dateLabels.append(label)
             dataArray.append(times)
+            
+            if incomplete_date_times[date] != nil {
+                incompleteDataArray.append(incomplete_date_times[date]!)
+            } else {
+                incompleteDataArray.append(0)
+            }
         }
-        return (dateLabels, dataArray)
+
+        return (dateLabels, dataArray, incompleteDataArray)
     }
     
     @IBAction func done() {

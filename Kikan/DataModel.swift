@@ -10,7 +10,7 @@ import Foundation
 
 class DataModel {
     var userSelections: UserSelections!
-    var date_times = [String: Int]()
+    var date_times = [String: Int](), incomplete_date_times = [String: Int]()
     
     init() {
         userSelections = UserSelections(tickSound: "grandfather", alarmSound: "rewind")
@@ -36,6 +36,16 @@ class DataModel {
         }
     }
     
+    func addImcompleteUseDates(useDate: NSDate) {
+        let components = getComponents(useDate)
+        let date = MyDate(year: components.year, month: components.month, day: components.day, weekOfYear: components.weekOfYear, dayOfWeek: components.weekday)
+        if incomplete_date_times[date.description] != nil {
+            incomplete_date_times[date.description] = incomplete_date_times[date.description]! + 1
+        } else {
+            incomplete_date_times[date.description] = 1
+        }
+    }
+    
     func getComponents(date: NSDate) -> NSDateComponents {
         let calendar = NSCalendar.currentCalendar()
         let components = calendar.components([.Weekday, .WeekOfYear, .Year, .Month, .Day, .Hour], fromDate: date)
@@ -48,6 +58,7 @@ class DataModel {
         let archiever = NSKeyedArchiver(forWritingWithMutableData: data)
         archiever.encodeObject(userSelections, forKey: "UserSelections")
         archiever.encodeObject(date_times, forKey: "DateTimes")
+        archiever.encodeObject(incomplete_date_times, forKey: "IncompleteDateTimes")
         archiever.finishEncoding()
         data.writeToFile(dataFilePath(), atomically: true)
     }
@@ -62,6 +73,9 @@ class DataModel {
                 }
                 if let val = unarchiver.decodeObjectForKey("DateTimes") {
                     date_times = val as! [String: Int]
+                }
+                if let val = unarchiver.decodeObjectForKey("IncompleteDateTimes") {
+                    incomplete_date_times = val as! [String: Int]
                 }
                 unarchiver.finishDecoding()
             }

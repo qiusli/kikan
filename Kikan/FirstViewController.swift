@@ -13,6 +13,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var dataModel: DataModel!
     
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
 
     var minuteSlider: EFCircularSlider!
     var secondSlider: EFCircularSlider!
@@ -68,6 +70,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        stopButton.userInteractionEnabled = false
         view.backgroundColor = UIColor(red: 31/255.0, green: 61/255.0, blue: 91/255.0, alpha: 1.0)
         minuteSlider.center = view.center
         secondSlider.center = view.center
@@ -76,17 +79,21 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func start(sender: UIButton) {
-        let audioPlayer = configureAudioPlayerWithName(dataModel.userSelections.tickSound, andType: "wav")
-        audioPlayer.play()
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
-        dataModel.addUseDates(NSDate())
+        if timeLabel.text != "00:00" {
+            let audioPlayer = configureAudioPlayerWithName(dataModel.userSelections.tickSound, andType: "wav")
+            audioPlayer.play()
+            
+            stopButton.userInteractionEnabled = true
+            
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
+        }
     }
     
     @IBAction func stop(sender: UIButton) {
         timer.invalidate()
         audioPlayer?.stop()
         timeLabel.text = "00:00"
+        dataModel.addImcompleteUseDates(NSDate())
     }
     
     func subtractTime(timer: NSTimer) {
@@ -96,10 +103,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let secondString = second < 10 ? "0" + String(second) : String(second)
         timeLabel.text = "\(minuteString):\(secondString)"
         
-        if minute <= 0 && second == 0 {
+        if minute <= 0 && second <= 0 {
             let tickAudioPlayer = timer.userInfo as! AVAudioPlayer
             timer.invalidate()
             tickAudioPlayer.stop()
+            stopButton.userInteractionEnabled = false
+            // only naturally completed task can be considered as 'finished'
+            dataModel.addUseDates(NSDate())
             
             configureAudioPlayerWithName(dataModel.userSelections.alarmSound, andType: "wav")
             let alert = UIAlertController(title: "Time is up!", message: "Enjoy your break!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -113,7 +123,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if second == 0 {
             second = 59
-            minute--
+            if minute > 0 {
+                minute--
+            }
         }
     }
     
