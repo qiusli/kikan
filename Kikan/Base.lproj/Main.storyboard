@@ -100,19 +100,19 @@
                                     <action selector="stop:" destination="zYE-KC-6kD" eventType="touchUpInside" id="2hg-ok-5EF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWI-P3-INw">
-                                <rect key="frame" x="26" y="85" width="63" height="30"/>
-                                <state key="normal" title="Category"/>
-                                <connections>
-                                    <action selector="pickCategory:" destination="zYE-KC-6kD" eventType="touchUpInside" id="Cya-LR-iQp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylL-lL-iSs">
                                 <rect key="frame" x="263" y="519" width="74" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="start:" destination="zYE-KC-6kD" eventType="touchUpInside" id="nVl-XN-5e0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TfA-Kx-rnq">
+                                <rect key="frame" x="20" y="99" width="79" height="30"/>
+                                <state key="normal" title="show sheet"/>
+                                <connections>
+                                    <action selector="showActionSheet:" destination="zYE-KC-6kD" eventType="touchUpInside" id="yB8-Or-vhn"/>
                                 </connections>
                             </button>
                         </subviews>

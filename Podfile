@@ -1,6 +1,10 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
 use_frameworks!
 
 target 'Kikan' do
   pod 'PNChart'
-  pod 'IGLDropDownMenu', '~> 1.0'
+  pod "CloudTagView"
+  pod "AHKActionSheet"
+  pod 'STZPopupView'
 end

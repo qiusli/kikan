@@ -8,7 +8,9 @@
 
 import UIKit
 import AVFoundation
-import IGLDropDownMenu
+import AHKActionSheet
+import CloudTagView
+import STZPopupView
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate {
     var dataModel: DataModel!
@@ -29,6 +31,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let menuCellIdentifier = "rotationCell"
     
     var audioPlayer: AVAudioPlayer?
+    let cloudView = CloudTagView()
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -90,27 +93,27 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    @IBAction func pickCategory(sender: UIButton) {
-        var dropdownItems = [IGLDropDownItem]()
-        for i in 0..<4 {
-            let item = IGLDropDownItem()
-            item.text = "\(i)"
-            dropdownItems.append(item)
-        }
-        
-        let dropdownMenu = IGLDropDownMenu(frame: CGRectMake(0, 0, 200, 45))
-        dropdownMenu.dropDownItems = dropdownItems
-        dropdownMenu.menuText = "Choose Weather"
-        dropdownMenu.paddingLeft = 10
-        dropdownMenu.frame = CGRectMake(60, 100, 200, 45)
-        
-        dropdownMenu.type = .SlidingInFromLeft
-        dropdownMenu.gutterY = 5
-        dropdownMenu.itemAnimationDelay = 0.1
-        dropdownMenu.rotate = .Random
-        
-        dropdownMenu.reloadView()
-        self.view.addSubview(dropdownMenu)
+    @IBAction func showActionSheet(sender: UIButton) {
+        let actionSheet = AHKActionSheet(title: nil)
+        actionSheet.addButtonWithTitle("Test1", type: .Default, handler: {
+            actionSheet in
+            print("aha")
+        })
+        actionSheet.addButtonWithTitle("Test2", type: .Default, handler: {
+            actionSheet in
+            print("aha")
+        })
+        actionSheet.addButtonWithTitle("Test3", type: .Default, handler: {
+            actionSheet in
+            print("aha")
+        })
+        actionSheet.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
+            _ in
+            let popupView = self.createPopupview()
+            
+            self.presentPopupView(popupView)
+        })
+        actionSheet.show()
     }
     
     @IBAction func stop(sender: UIButton) {
@@ -118,6 +121,25 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         audioPlayer?.stop()
         timeLabel.text = "00:00"
         dataModel.addImcompleteUseDates(NSDate())
+    }
+    
+    func createPopupview() -> UIView {
+        
+        let popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
+        popupView.backgroundColor = UIColor.whiteColor()
+        
+        // Close button
+        let button = UIButton(type: .System)
+        button.frame = CGRectMake(60, 60, 80, 40)
+        button.setTitle("Close", forState: UIControlState.Normal)
+        button.addTarget(self, action: "touchClose", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView.addSubview(button)
+        
+        return popupView
+    }
+    
+    func touchClose() {
+        dismissPopupView()
     }
     
     func subtractTime(timer: NSTimer) {
