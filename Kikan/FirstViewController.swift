@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import IGLDropDownMenu
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate {
     var dataModel: DataModel!
@@ -87,6 +88,29 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "subtractTime:", userInfo: audioPlayer, repeats: true)
         }
+    }
+    
+    @IBAction func pickCategory(sender: UIButton) {
+        var dropdownItems = [IGLDropDownItem]()
+        for i in 0..<4 {
+            let item = IGLDropDownItem()
+            item.text = "\(i)"
+            dropdownItems.append(item)
+        }
+        
+        let dropdownMenu = IGLDropDownMenu(frame: CGRectMake(0, 0, 200, 45))
+        dropdownMenu.dropDownItems = dropdownItems
+        dropdownMenu.menuText = "Choose Weather"
+        dropdownMenu.paddingLeft = 10
+        dropdownMenu.frame = CGRectMake(60, 100, 200, 45)
+        
+        dropdownMenu.type = .SlidingInFromLeft
+        dropdownMenu.gutterY = 5
+        dropdownMenu.itemAnimationDelay = 0.1
+        dropdownMenu.rotate = .Random
+        
+        dropdownMenu.reloadView()
+        self.view.addSubview(dropdownMenu)
     }
     
     @IBAction func stop(sender: UIButton) {
