@@ -12,7 +12,7 @@ import AHKActionSheet
 import CloudTagView
 import STZPopupView
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, UITextFieldDelegate {
     var dataModel: DataModel!
     
     @IBOutlet weak var timeLabel: UILabel!
@@ -32,6 +32,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var audioPlayer: AVAudioPlayer?
     let cloudView = CloudTagView()
+    
+    var popupView: UIView?
+    var button: UIButton?
+    var textField: UITextField?
+    var text: String?
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -80,6 +85,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         secondSlider.center = view.center
         view.addSubview(minuteSlider)
         view.addSubview(secondSlider)
+        createPopupview()
     }
     
     @IBAction func start(sender: UIButton) {
@@ -109,9 +115,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
         actionSheet.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
             _ in
-            let popupView = self.createPopupview()
-            
-            self.presentPopupView(popupView)
+            self.presentPopupView(self.popupView!)
         })
         actionSheet.show()
     }
@@ -123,22 +127,41 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dataModel.addImcompleteUseDates(NSDate())
     }
     
-    func createPopupview() -> UIView {
+    func createPopupview() {
         
-        let popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
-        popupView.backgroundColor = UIColor.whiteColor()
+        popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
+        popupView!.backgroundColor = UIColor.whiteColor()
         
         // Close button
-        let button = UIButton(type: .System)
-        button.frame = CGRectMake(60, 60, 80, 40)
-        button.setTitle("Close", forState: UIControlState.Normal)
-        button.addTarget(self, action: "touchClose", forControlEvents: UIControlEvents.TouchUpInside)
-        popupView.addSubview(button)
+        button = UIButton(type: .System)
+        button!.frame = CGRectMake(100, 100, 80, 40)
+        button!.setTitle("Save", forState: UIControlState.Normal)
+        button!.addTarget(self, action: "touchSave", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView!.addSubview(button!)
         
-        return popupView
+        print("reached here 1")
+        textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+        textField!.borderStyle = .RoundedRect
+        textField!.backgroundColor = UIColor.grayColor()
+        textField!.delegate = self
+        print("reached here")
+        popupView!.addSubview(textField!)
     }
     
-    func touchClose() {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print("hhh")
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        print("aha")
+        let oldText: NSString = textField.text!
+        let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
+        text = newText as String
+        return true
+    }
+    
+    func touchSave() {
+        print(text!)
         dismissPopupView()
     }
     
@@ -206,7 +229,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func initiateMenuOptions() {
         menuTitles = ["Settings", "Charts", "Like profile"]
-        menuIcons = [UIImage(named: "icn_4")!, UIImage(named: "icn_4")!, UIImage(named: "icn_4")!]
+        menuIcons = [UIImage(named: "Appointments")!, UIImage(named: "Appointments")!, UIImage(named: "Appointments")!]
     }
     
     override func prefersStatusBarHidden() -> Bool {
