@@ -33,6 +33,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var audioPlayer: AVAudioPlayer?
     let cloudView = CloudTagView()
     
+//    var actionSheet: AHKActionSheet?
+    
     var popupView: UIView?
     var button: UIButton?
     var textField: UITextField?
@@ -100,24 +102,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func showActionSheet(sender: UIButton) {
-        let actionSheet = AHKActionSheet(title: nil)
-        actionSheet.addButtonWithTitle("Test1", type: .Default, handler: {
-            actionSheet in
-            print("aha")
-        })
-        actionSheet.addButtonWithTitle("Test2", type: .Default, handler: {
-            actionSheet in
-            print("aha")
-        })
-        actionSheet.addButtonWithTitle("Test3", type: .Default, handler: {
-            actionSheet in
-            print("aha")
-        })
-        actionSheet.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
-            _ in
-            self.presentPopupView(self.popupView!)
-        })
-        actionSheet.show()
+        configureActionSheetCells()
     }
     
     @IBAction func stop(sender: UIButton) {
@@ -125,6 +110,22 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         audioPlayer?.stop()
         timeLabel.text = "00:00"
         dataModel.addImcompleteUseDates(NSDate())
+    }
+    
+    func configureActionSheetCells() {
+        let actionSheet = AHKActionSheet(title: "Category")
+        let tags = dataModel.userSelections.tags
+        for tgs in tags {
+            actionSheet!.addButtonWithTitle(tgs, type: .Default, handler: {
+                actionSheet in
+                print("aha")
+            })
+        }
+        actionSheet!.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
+            _ in
+            self.presentPopupView(self.popupView!)
+        })
+        actionSheet!.show()
     }
     
     func createPopupview() {
@@ -139,21 +140,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         button!.addTarget(self, action: "touchSave", forControlEvents: UIControlEvents.TouchUpInside)
         popupView!.addSubview(button!)
         
-        print("reached here 1")
         textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
         textField!.borderStyle = .RoundedRect
         textField!.backgroundColor = UIColor.grayColor()
         textField!.delegate = self
-        print("reached here")
         popupView!.addSubview(textField!)
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
-        print("hhh")
-    }
-    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        print("aha")
         let oldText: NSString = textField.text!
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
         text = newText as String
@@ -161,8 +155,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func touchSave() {
-        print(text!)
+        if let text = text {
+            print("save text")
+            dataModel.userSelections.tags.append(text)
+        }
         dismissPopupView()
+        configureActionSheetCells()
     }
     
     func subtractTime(timer: NSTimer) {
