@@ -31,14 +31,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let menuCellIdentifier = "rotationCell"
     
     var audioPlayer: AVAudioPlayer?
-    let cloudView = CloudTagView()
-    
-//    var actionSheet: AHKActionSheet?
-    
-    var popupView: UIView?
-    var button: UIButton?
-    var textField: UITextField?
-    var text: String?
+    var text: String?, textToEdit: String?, textAfterEdit: String?
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -87,7 +80,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         secondSlider.center = view.center
         view.addSubview(minuteSlider)
         view.addSubview(secondSlider)
-        createPopupview()
     }
     
     @IBAction func start(sender: UIButton) {
@@ -115,46 +107,82 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func configureActionSheetCells() {
         let actionSheet = AHKActionSheet(title: "Category")
         let tags = dataModel.userSelections.tags
-        for tgs in tags {
-            actionSheet!.addButtonWithTitle(tgs, type: .Default, handler: {
+        for tg in tags {
+            actionSheet!.addButtonWithTitle(tg, type: .Default, handler: {
                 actionSheet in
-                print("aha")
+                self.textToEdit = tg
+                self.createEditPopupView(tg)
             })
         }
         actionSheet!.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
             _ in
-            self.presentPopupView(self.popupView!)
+            self.createPopupview()
         })
         actionSheet!.show()
     }
     
     func createPopupview() {
+        let popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
+        popupView.backgroundColor = UIColor.whiteColor()
         
-        popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
-        popupView!.backgroundColor = UIColor.whiteColor()
+        let textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+        textField.borderStyle = .RoundedRect
+        textField.backgroundColor = UIColor.grayColor()
+        textField.delegate = self
+        textField.tag = 1
+        popupView.addSubview(textField)
         
         // Close button
-        button = UIButton(type: .System)
-        button!.frame = CGRectMake(100, 100, 80, 40)
-        button!.setTitle("Save", forState: UIControlState.Normal)
-        button!.addTarget(self, action: "touchSave", forControlEvents: UIControlEvents.TouchUpInside)
-        popupView!.addSubview(button!)
+        let button = UIButton(type: .System)
+        button.frame = CGRectMake(100, 100, 80, 40)
+        button.setTitle("Save", forState: UIControlState.Normal)
+        button.addTarget(self, action: "touchAdd", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView.addSubview(button)
         
-        textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
-        textField!.borderStyle = .RoundedRect
-        textField!.backgroundColor = UIColor.grayColor()
-        textField!.delegate = self
-        popupView!.addSubview(textField!)
+        presentPopupView(popupView)
+    }
+    
+    func createEditPopupView(tagToEdit: String) {
+        let popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
+        popupView.backgroundColor = UIColor.whiteColor()
+        
+        let textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
+        textField.borderStyle = .RoundedRect
+        textField.backgroundColor = UIColor.grayColor()
+        textField.text = tagToEdit
+        textField.tag = 2
+        textField.delegate = self
+        popupView.addSubview(textField)
+        
+        // Close button
+        let button = UIButton(type: .System)
+        button.frame = CGRectMake(100, 100, 80, 40)
+        button.setTitle("Save Edit", forState: UIControlState.Normal)
+        button.addTarget(self, action: "touchSaveEdit", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView.addSubview(button)
+        
+        presentPopupView(popupView)
+    }
+    
+    func touchSaveEdit() {
+        if let index = dataModel.userSelections.tags.indexOf(textToEdit!) {
+            dataModel.userSelections.tags[index] = textAfterEdit!
+        }
+        dismissPopupView()
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let oldText: NSString = textField.text!
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
-        text = newText as String
+        if textField.tag == 1 {
+            text = newText as String
+        } else {
+            textAfterEdit = newText as String
+        }
         return true
     }
     
-    func touchSave() {
+    func touchAdd() {
         if let text = text {
             print("save text")
             dataModel.userSelections.tags.append(text)
