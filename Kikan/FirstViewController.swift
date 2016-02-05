@@ -9,7 +9,6 @@
 import UIKit
 import AVFoundation
 import AHKActionSheet
-import CloudTagView
 import STZPopupView
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, UITextFieldDelegate {
@@ -18,6 +17,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var tagButton: UIButton!
 
     var minuteSlider: EFCircularSlider!
     var secondSlider: EFCircularSlider!
@@ -31,7 +31,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let menuCellIdentifier = "rotationCell"
     
     var audioPlayer: AVAudioPlayer?
-    var text: String?, textToEdit: String?, textAfterEdit: String?
+    var text: String?
     
     required init?(coder aDecoder: NSCoder) {
         let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
@@ -104,14 +104,14 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dataModel.addImcompleteUseDates(NSDate())
     }
     
+    // TODO: delete tag
     func configureActionSheetCells() {
         let actionSheet = AHKActionSheet(title: "Category")
         let tags = dataModel.userSelections.tags
         for tg in tags {
             actionSheet!.addButtonWithTitle(tg, type: .Default, handler: {
-                actionSheet in
-                self.textToEdit = tg
-                self.createEditPopupView(tg)
+                _ in
+                self.tagButton.setTitle(tg, forState: .Normal)
             })
         }
         actionSheet!.addButtonWithTitle("Add More Tags", type: .Destructive, handler: {
@@ -129,7 +129,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         textField.borderStyle = .RoundedRect
         textField.backgroundColor = UIColor.grayColor()
         textField.delegate = self
-        textField.tag = 1
         popupView.addSubview(textField)
         
         // Close button
@@ -142,54 +141,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         presentPopupView(popupView)
     }
     
-    func createEditPopupView(tagToEdit: String) {
-        let popupView = UIView(frame: CGRectMake(0, 0, 200, 160))
-        popupView.backgroundColor = UIColor.whiteColor()
-        
-        let textField = UITextField(frame: CGRect(x: 50, y: 50, width: 100, height: 50))
-        textField.borderStyle = .RoundedRect
-        textField.backgroundColor = UIColor.grayColor()
-        textField.text = tagToEdit
-        textField.tag = 2
-        textField.delegate = self
-        popupView.addSubview(textField)
-        
-        // save button
-        let saveButton = UIButton(type: .System)
-        saveButton.frame = CGRectMake(100, 100, 80, 40)
-        saveButton.setTitle("Save Edit", forState: UIControlState.Normal)
-        saveButton.addTarget(self, action: "touchSaveEdit:", forControlEvents: UIControlEvents.TouchUpInside)
-        popupView.addSubview(saveButton)
-        
-        
-        // delete button
-        let deleteButton = UIButton(type: .System)
-        deleteButton.frame = CGRectMake(20, 100, 80, 40)
-        deleteButton.setTitle("Delete", forState: UIControlState.Normal)
-        deleteButton.addTarget(self, action: "touchSaveEdit:", forControlEvents: UIControlEvents.TouchUpInside)
-        popupView.addSubview(deleteButton)
-        presentPopupView(popupView)
-    }
-    
-    func touchSaveEdit(sender: UIButton) {
-        if let index = dataModel.userSelections.tags.indexOf(textToEdit!) {
-            if sender.currentTitle == "Delete" {
-                dataModel.userSelections.tags.removeAtIndex(index)
-            } else {
-                dataModel.userSelections.tags[index] = textAfterEdit!
-            }
-        }
-        dismissPopupView()
-    }
-    
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let oldText: NSString = textField.text!
         let newText: NSString = oldText.stringByReplacingCharactersInRange(range, withString: string)
-        if textField.tag == 1 {
-            text = newText as String
-        } else {
-            textAfterEdit = newText as String
-        }
+        text = newText as String
         return true
     }
     

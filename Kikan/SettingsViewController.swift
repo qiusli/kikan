@@ -23,8 +23,6 @@ class SettingsViewController: UITableViewController {
     
     weak var delegate: FirstViewController?
     
-    var selectedSection: Int = 0
-    
     override func viewDidLoad() {
         tickSounds = ["grandfather", "rollo", "mantel", "mechanical", "mono"]
         alarmSounds = ["120bpm", "rsilveira", "alwegs", "sangtao", "fredemo", "rewind"]
@@ -36,8 +34,6 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedSection = indexPath.section
-        
         let actionSheet = AHKActionSheet(title: "Category")
         if indexPath.section == 0 {
             for tick in tickSounds {

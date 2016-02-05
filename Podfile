@@ -4,7 +4,6 @@ use_frameworks!
 
 target 'Kikan' do
   pod 'PNChart'
-  pod "CloudTagView"
   pod "AHKActionSheet"
   pod 'STZPopupView'
 end
