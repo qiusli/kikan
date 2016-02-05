@@ -12,6 +12,10 @@ import AHKActionSheet
 import CloudTagView
 import STZPopupView
 
+@objc protocol FirstViewControllerDelegate: class {
+    func firstViewControllerDidSwipeToDelete(atIndex: NSIndexPath)
+}
+
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, UITextFieldDelegate {
     var dataModel: DataModel!
     
@@ -154,19 +158,30 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         textField.delegate = self
         popupView.addSubview(textField)
         
-        // Close button
-        let button = UIButton(type: .System)
-        button.frame = CGRectMake(100, 100, 80, 40)
-        button.setTitle("Save Edit", forState: UIControlState.Normal)
-        button.addTarget(self, action: "touchSaveEdit", forControlEvents: UIControlEvents.TouchUpInside)
-        popupView.addSubview(button)
+        // save button
+        let saveButton = UIButton(type: .System)
+        saveButton.frame = CGRectMake(100, 100, 80, 40)
+        saveButton.setTitle("Save Edit", forState: UIControlState.Normal)
+        saveButton.addTarget(self, action: "touchSaveEdit:", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView.addSubview(saveButton)
         
+        
+        // delete button
+        let deleteButton = UIButton(type: .System)
+        deleteButton.frame = CGRectMake(20, 100, 80, 40)
+        deleteButton.setTitle("Delete", forState: UIControlState.Normal)
+        deleteButton.addTarget(self, action: "touchSaveEdit:", forControlEvents: UIControlEvents.TouchUpInside)
+        popupView.addSubview(deleteButton)
         presentPopupView(popupView)
     }
     
-    func touchSaveEdit() {
+    func touchSaveEdit(sender: UIButton) {
         if let index = dataModel.userSelections.tags.indexOf(textToEdit!) {
-            dataModel.userSelections.tags[index] = textAfterEdit!
+            if sender.currentTitle == "Delete" {
+                dataModel.userSelections.tags.removeAtIndex(index)
+            } else {
+                dataModel.userSelections.tags[index] = textAfterEdit!
+            }
         }
         dismissPopupView()
     }
@@ -184,7 +199,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func touchAdd() {
         if let text = text {
-            print("save text")
             dataModel.userSelections.tags.append(text)
         }
         dismissPopupView()
