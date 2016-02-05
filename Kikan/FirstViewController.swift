@@ -12,10 +12,6 @@ import AHKActionSheet
 import CloudTagView
 import STZPopupView
 
-@objc protocol FirstViewControllerDelegate: class {
-    func firstViewControllerDidSwipeToDelete(atIndex: NSIndexPath)
-}
-
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, UITextFieldDelegate {
     var dataModel: DataModel!
     

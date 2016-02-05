@@ -8,13 +8,13 @@
 
 import UIKit
 import AVFoundation
+import AHKActionSheet
 
 protocol SettingsViewControllerDelegate: class {
     func settingsViewController(controller: SettingsViewController, didFinishPickingTickSound tickSound: String, andAlarmSound alarmSound: String)
 }
 
-class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
-    var kkListActionSheet: KkListActionSheet?
+class SettingsViewController: UITableViewController {
     var tickSounds: [String]!
     var alarmSounds: [String]!
     var audioPlayer: AVAudioPlayer!
@@ -26,12 +26,9 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     var selectedSection: Int = 0
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        kkListActionSheet = KkListActionSheet.createInit(self)
-        kkListActionSheet?.delegate = self
         tickSounds = ["grandfather", "rollo", "mantel", "mechanical", "mono"]
         alarmSounds = ["120bpm", "rsilveira", "alwegs", "sangtao", "fredemo", "rewind"]
+        super.viewDidLoad()
     }
     
     @IBAction func done() {
@@ -40,50 +37,28 @@ class SettingsViewController: UITableViewController, KkListActionSheetDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedSection = indexPath.section
-        kkListActionSheet?.kkTableView.reloadData()
-        kkListActionSheet?.showHide()
-    }
-    
-    // MARK: KkListActionSheet Delegate Method
-    func kkTableView(tableView: UITableView, rowsInSection section: NSInteger) -> NSInteger {
-        var row: Int!
-        switch selectedSection {
-        case 0:
-            row = tickSounds!.count
-        default:
-            row = alarmSounds!.count
-        }
-        return row
-    }
-    
-    func kkTableView(tableView: UITableView, currentIndx indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdenfier = "cell"
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdenfier)
         
-        if cell == nil {
-            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdenfier)
+        let actionSheet = AHKActionSheet(title: "Category")
+        if indexPath.section == 0 {
+            for tick in tickSounds {
+                actionSheet!.addButtonWithTitle(tick, type: .Default, handler: {
+                    _ in
+                    self.tickSoundPicked = tick
+                    self.audioPlayer = self.generateAudioPlayerWithName(tick)
+                    self.audioPlayer.play()
+                })
+            }
+        } else {
+            for alarm in alarmSounds {
+                actionSheet!.addButtonWithTitle(alarm, type: .Default, handler: {
+                    _ in
+                    self.alarmSoundPicked = alarm
+                    self.audioPlayer = self.generateAudioPlayerWithName(alarm)
+                    self.audioPlayer.play()
+                })
+            }
         }
-        
-        switch selectedSection {
-        case 0:
-            cell?.textLabel?.text = tickSounds![indexPath.row]
-        default:
-            cell?.textLabel?.text = alarmSounds![indexPath.row]
-        }
-        
-        return cell!
-    }
-    
-    func kkTableView(tableView: UITableView, selectIndex indexPath: NSIndexPath) {
-        if selectedSection == 0 {
-            tickSoundPicked = tickSounds[indexPath.row]
-            audioPlayer = generateAudioPlayerWithName(tickSoundPicked)
-        } else if selectedSection == 1 {
-            alarmSoundPicked = alarmSounds[indexPath.row]
-            audioPlayer = generateAudioPlayerWithName(alarmSoundPicked)
-        }
-        
-        audioPlayer.play()
+        actionSheet!.show()
     }
     
     func generateAudioPlayerWithName(name: String) -> AVAudioPlayer {

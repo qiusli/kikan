@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		11BC2300DD26153084A67B24 /* Pods_Kikan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */; };
 		AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D61C57387D003F92E8 /* SettingsViewController.swift */; };
-		AA3108DF1C58697C003F92E8 /* KkListActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */; };
-		AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */; };
-		AA3108E11C58697C003F92E8 /* KkListCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */; };
-		AA3108E41C588B01003F92E8 /* AudioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA3108E31C588B01003F92E8 /* AudioCell.xib */; };
-		AA3108E61C588B57003F92E8 /* AudioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108E51C588B57003F92E8 /* AudioCell.swift */; };
 		AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF71C58C0BA00AAE30A /* DataModel.swift */; };
 		AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */; };
 		AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */; };
@@ -52,11 +47,6 @@
 		8F6956FFA0B2CA79FDD14B89 /* Pods-Kikan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kikan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Kikan/Pods-Kikan.release.xcconfig"; sourceTree = "<group>"; };
 		A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kikan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3108D61C57387D003F92E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KkListActionSheet.xib; sourceTree = "<group>"; };
-		AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KkListActionSheet.swift; sourceTree = "<group>"; };
-		AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KkListCloseButton.swift; sourceTree = "<group>"; };
-		AA3108E31C588B01003F92E8 /* AudioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioCell.xib; sourceTree = "<group>"; };
-		AA3108E51C588B57003F92E8 /* AudioCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioCell.swift; sourceTree = "<group>"; };
 		AA32BCF71C58C0BA00AAE30A /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelections.swift; sourceTree = "<group>"; };
 		AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
@@ -115,16 +105,6 @@
 				A20C5FDC7176F3219B952D26 /* Pods_Kikan.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AA3108E21C586987003F92E8 /* KkListActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				AA3108DC1C58697C003F92E8 /* KkListActionSheet.xib */,
-				AA3108DD1C58697C003F92E8 /* KkListActionSheet.swift */,
-				AA3108DE1C58697C003F92E8 /* KkListCloseButton.swift */,
-			);
-			name = KkListActionSheet;
 			sourceTree = "<group>";
 		};
 		AA64121D1C55D2C5007076DE /* sound */ = {
@@ -189,8 +169,6 @@
 		AA6412571C563BE5007076DE /* custom_cell */ = {
 			isa = PBXGroup;
 			children = (
-				AA3108E31C588B01003F92E8 /* AudioCell.xib */,
-				AA3108E51C588B57003F92E8 /* AudioCell.swift */,
 				AA6412531C5630EE007076DE /* ContextMenuCell.xib */,
 				AA6412551C56313B007076DE /* ContextMenuCell.swift */,
 			);
@@ -200,7 +178,6 @@
 		AAD6D86B1C54903000BFC22E /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				AA3108E21C586987003F92E8 /* KkListActionSheet */,
 				AA64123E1C55EB9C007076DE /* YALContextMenu */,
 				AA64123A1C55E9E5007076DE /* EFCircularSlider */,
 				AAD6D87B1C54B88000BFC22E /* Kikan-Bridging-Header.h */,
@@ -326,7 +303,6 @@
 				AA6412341C55D823007076DE /* alwegs.wav in Resources */,
 				AA6412221C55D2E8007076DE /* rollo.wav in Resources */,
 				AA6412251C55D2E8007076DE /* mono.wav in Resources */,
-				AA3108E41C588B01003F92E8 /* AudioCell.xib in Resources */,
 				AADFA2511C54397D00E3F057 /* LaunchScreen.storyboard in Resources */,
 				AA6412351C55D823007076DE /* sangtao.wav in Resources */,
 				AA6412241C55D2E8007076DE /* mechanical.wav in Resources */,
@@ -334,7 +310,6 @@
 				AADFA24E1C54397D00E3F057 /* Assets.xcassets in Resources */,
 				AADFA24C1C54397D00E3F057 /* Main.storyboard in Resources */,
 				AA6412231C55D2E8007076DE /* mantel.wav in Resources */,
-				AA3108DF1C58697C003F92E8 /* KkListActionSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,13 +376,10 @@
 				AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */,
 				AAD6D87C1C54B8A000BFC22E /* EFCircularSlider.h in Sources */,
 				AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */,
-				AA3108E11C58697C003F92E8 /* KkListCloseButton.swift in Sources */,
 				AA64124B1C55EBCC007076DE /* UIView+YALConstraints.m in Sources */,
 				AAD6D8791C54B84500BFC22E /* EFCircularSlider.m in Sources */,
 				AA64124C1C55EBCC007076DE /* YALContextMenuTableView.m in Sources */,
-				AA3108E01C58697C003F92E8 /* KkListActionSheet.swift in Sources */,
 				AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */,
-				AA3108E61C588B57003F92E8 /* AudioCell.swift in Sources */,
 				AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */,
 				AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */,
 				AAD6D8801C54BBB800BFC22E /* FirstViewController.swift in Sources */,
