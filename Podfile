@@ -6,4 +6,5 @@ target 'Kikan' do
   pod 'PNChart'
   pod "AHKActionSheet"
   pod 'STZPopupView'
+  pod "AKPickerView-Swift"
 end

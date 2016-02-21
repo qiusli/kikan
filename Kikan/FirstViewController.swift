@@ -10,17 +10,19 @@ import UIKit
 import AVFoundation
 import AHKActionSheet
 import STZPopupView
+import AKPickerView_Swift
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, UITextFieldDelegate {
+class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,
+        SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, AKPickerViewDataSource, AKPickerViewDelegate {
     var dataModel: DataModel!
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
+    
 
-    var minuteSlider: EFCircularSlider!
-    var secondSlider: EFCircularSlider!
+    @IBOutlet weak var pickerView: AKPickerView!
 
     var minute = 0, second = 0
     var timer = NSTimer()
@@ -33,42 +35,12 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var audioPlayer: AVAudioPlayer?
     var text: String?
     
+    let timeOptions = ["1", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
     required init?(coder aDecoder: NSCoder) {
-        let minuteSliderFrame = CGRectMake(5, 170, 310, 310)
-        minuteSlider = EFCircularSlider(frame: minuteSliderFrame)
-        let hourSliderFrame = CGRectMake(55, 220, 210, 210)
-        secondSlider = EFCircularSlider(frame: hourSliderFrame)
-
         super.init(coder: aDecoder)
         
         initiateMenuOptions()
         navigationController?.setValue(YALNavigationBar(), forKeyPath: "navigationBar")
-        
-        minuteSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
-        minuteSlider.filledColor = UIColor(red: 155/255.0, green: 211/255.0, blue: 156/255.0, alpha: 1.0)
-        let minuteMarkingLabels = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
-        minuteSlider.innerMarkingLabels = minuteMarkingLabels
-        minuteSlider.labelFont = UIFont.systemFontOfSize(14)
-        minuteSlider.lineWidth = 8
-        minuteSlider.minimumValue = 0
-        minuteSlider.maximumValue = 60
-        minuteSlider.labelColor = UIColor(red: 76/255.0, green: 111/255.0, blue: 137/255.0, alpha: 1.0)
-        minuteSlider.handleType = CircularSliderHandleTypeDoubleCircleWithOpenCenter
-        minuteSlider.handleColor = minuteSlider.filledColor
-        minuteSlider.addTarget(self, action: "minuteDidChange:", forControlEvents: .ValueChanged)
-        
-        secondSlider.unfilledColor = UIColor(red: 23/255.0, green: 47/255, blue: 70/255, alpha: 1.0)
-        secondSlider.filledColor = UIColor(red: 98/255.0, green: 243/255.0, blue: 252/255.0, alpha: 1.0)
-        let hourMarkingLabels = ["5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
-        secondSlider.innerMarkingLabels = hourMarkingLabels
-        secondSlider.labelFont = UIFont.systemFontOfSize(14)
-        secondSlider.lineWidth = 12
-        secondSlider.minimumValue = 0
-        secondSlider.maximumValue = 60
-        secondSlider.labelColor = UIColor(red: 127/255.0, green: 229/255.0, blue: 255/255.0, alpha: 1.0)
-        secondSlider.handleType = CircularSliderHandleTypeBigCircle
-        secondSlider.handleColor = secondSlider.filledColor
-        secondSlider.addTarget(self, action: "secondDidChange:", forControlEvents: .ValueChanged)
     }
     
     override func viewDidLoad() {
@@ -76,10 +48,15 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
         stopButton.userInteractionEnabled = false
         view.backgroundColor = UIColor(red: 31/255.0, green: 61/255.0, blue: 91/255.0, alpha: 1.0)
-        minuteSlider.center = view.center
-        secondSlider.center = view.center
-        view.addSubview(minuteSlider)
-        view.addSubview(secondSlider)
+        
+        self.pickerView.delegate = self
+        self.pickerView.dataSource = self
+        
+        self.pickerView.font = UIFont(name: "HelveticaNeue-Light", size: 20)!
+        self.pickerView.highlightedFont = UIFont(name: "HelveticaNeue", size: 20)!
+        self.pickerView.pickerViewStyle = .Wheel
+        self.pickerView.maskDisabled = false
+        self.pickerView.reloadData()
     }
     
     @IBAction func start(sender: UIButton) {
@@ -157,12 +134,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func subtractTime(timer: NSTimer) {
-        second--
-        
-        let minuteString = minute < 10 ? "0" + String(minute) : String(minute)
-        let secondString = second < 10 ? "0" + String(second) : String(second)
-        timeLabel.text = "\(minuteString):\(secondString)"
-        
         if minute <= 0 && second <= 0 {
             let tickAudioPlayer = timer.userInfo as! AVAudioPlayer
             timer.invalidate()
@@ -182,11 +153,17 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         if second == 0 {
-            second = 59
             if minute > 0 {
                 minute--
+                second = 59
             }
+        } else {
+            second--
         }
+        
+        let minuteString = minute < 10 ? "0" + String(minute) : String(minute)
+        let secondString = second < 10 ? "0" + String(second) : String(second)
+        timeLabel.text = "\(minuteString):\(secondString)"
     }
     
     func configureAudioPlayerWithName(name: String, andType type: String) -> AVAudioPlayer {
@@ -198,24 +175,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } catch {
             fatalError("\(error)")
         }
-    }
-    
-    func minuteDidChange(slider: EFCircularSlider) {
-        let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
-        minute = newVal
-        let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
-        let oldTime: NSString = timeLabel.text!
-        let colonRange: NSRange = oldTime.rangeOfString(":")
-        timeLabel!.text = "\(newValString):\(oldTime.substringFromIndex(colonRange.location + 1))"
-    }
-    
-    func secondDidChange(slider: EFCircularSlider) {
-        let newVal = Int(slider.currentValue) < 60 ? Int(slider.currentValue) : 0
-        second = newVal
-        let newValString = newVal < 10 ? "0" + String(newVal) : String(newVal)
-        let oldTime: NSString = timeLabel.text!
-        let colonRange: NSRange = oldTime.rangeOfString(":")
-        timeLabel!.text = "\(oldTime.substringToIndex(colonRange.location)):\(newValString)"
     }
     
     func initiateMenuOptions() {
@@ -297,5 +256,35 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         dataModel.userSelections.tickSound = tickSound
         dataModel.userSelections.alarmSound = alarmSound
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func numberOfItemsInPickerView(pickerView: AKPickerView) -> Int {
+        return self.timeOptions.count
+    }
+    
+    func pickerView(pickerView: AKPickerView, titleForItem item: Int) -> String {
+        return self.timeOptions[item]
+    }
+    
+    func pickerView(pickerView: AKPickerView, configureLabel label: UILabel, forItem item: Int) {
+        label.textColor = UIColor.lightGrayColor()
+        label.highlightedTextColor = UIColor.whiteColor()
+        label.backgroundColor = UIColor(
+            hue: CGFloat(item) / CGFloat(self.timeOptions.count),
+            saturation: 1.0,
+            brightness: 0.5,
+            alpha: 1.0)
+    }
+    
+    func pickerView(pickerView: AKPickerView, marginForItem item: Int) -> CGSize {
+        return CGSizeMake(40, 20)
+    }
+    
+    func pickerView(pickerView: AKPickerView, didSelectItem item: Int) {
+        minute = Int(self.timeOptions[item])!
+        second = 0
+        let minuteString = minute < 10 ? "0" + String(minute) : String(minute)
+        let secondString = second < 10 ? "0" + String(second) : String(second)
+        timeLabel.text = "\(minuteString):\(secondString)"
     }
 }
