@@ -19,8 +19,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
-    
 
     @IBOutlet weak var pickerView: AKPickerView!
 

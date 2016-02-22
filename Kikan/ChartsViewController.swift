@@ -7,10 +7,15 @@
 //
 
 import UIKit
-import PNChart
+//import PNChart
+import PNChartSwift
 import Foundation
 
-class ChartsViewController: UITableViewController {
+public let PNGreenColor = UIColor(red: 77.0 / 255.0 , green: 196.0 / 255.0, blue: 122.0 / 255.0, alpha: 1.0)
+public let PNGreyColor = UIColor(red: 186.0 / 255.0 , green: 186.0 / 255.0, blue: 186.0 / 255.0, alpha: 1.0)
+public let PNLightGreyColor = UIColor(red: 246.0 / 255.0 , green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+
+class ChartsViewController: UITableViewController, PNChartDelegate {
     var dataModel: DataModel?
     var monthStrRep = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "June.", "July.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
     
@@ -20,62 +25,69 @@ class ChartsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("chartsCell", forIndexPath: indexPath)
-        if indexPath.row == 2 {
+        if indexPath.row == 1 {
+//            cell.contentView.addSubview(configureCircleChart())
+        } else if indexPath.row == 2 {
             cell.contentView.addSubview(configureBarChart())
         } else {
-            cell.contentView.addSubview(configureLineChart())
-            cell.backgroundColor = UIColor.redColor()
+            cell.contentView.addSubview(configureLineChart().0)
+            cell.contentView.addSubview(configureLineChart().1)
         }
         
         return cell
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 210
+        return 250
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    // from 7 days before to now currently
-    func configureLineChart() -> PNLineChart {
-        let lineChart = PNLineChart.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
+    func configureLineChart() -> (PNLineChart , UILabel) {
+        let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 90, 320.0, 30))
+        ChartLabel.textColor = PNGreenColor
+        ChartLabel.font = UIFont(name: "Avenir-Medium", size:23.0)
+        ChartLabel.textAlignment = NSTextAlignment.Center
+        
+        //Add LineChart
+        ChartLabel.text = "Line Chart"
+            
+        let lineChart:PNLineChart = PNLineChart(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 200))
         lineChart.yLabelFormat = "%1.1f"
         lineChart.showLabel = true
-        lineChart.backgroundColor = UIColor.grayColor()
-
+        lineChart.backgroundColor = UIColor.clearColor()
         let info = configureDataAndLabel()
         lineChart.xLabels = info.dateLabels
         lineChart.showCoordinateAxis = true
         
-        let data:PNLineChartData = PNLineChartData()
-        data.color = UIColor.greenColor()
-        data.itemCount = UInt(lineChart.xLabels.count)
-        data.inflexionPointStyle = PNLineChartPointStyle.Circle
-        data.getData = ({(index: UInt) -> PNLineChartDataItem in
-            let yValue: CGFloat = CGFloat(info.dataArray[Int(index)])
+        // for complete tasks
+        let data01:PNLineChartData = PNLineChartData()
+        data01.color = PNGreenColor
+        data01.itemCount = lineChart.xLabels.count
+        data01.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
+        data01.getData = ({(index: Int) -> PNLineChartDataItem in
+            let yValue:CGFloat = CGFloat(info.dataArray[index])
             let item = PNLineChartDataItem(y: yValue)
             return item
         })
-        lineChart.chartData = [data]
         
-        if info.incompleteDataArray.count > 0 {
-            let incomplete_data:PNLineChartData = PNLineChartData()
-            incomplete_data.color = UIColor.redColor()
-            incomplete_data.itemCount = UInt(lineChart.xLabels.count)
-            incomplete_data.inflexionPointStyle = PNLineChartPointStyle.Circle
-            incomplete_data.getData = ({(index: UInt) -> PNLineChartDataItem in
-                let yValue: CGFloat = CGFloat(info.incompleteDataArray[Int(index)])
-                    let item = PNLineChartDataItem(y: yValue)
-                    return item
-                }
-            )
-            lineChart.chartData.append(incomplete_data)
-        }
+        // for imcomplete tasks
+        let data02:PNLineChartData = PNLineChartData()
+        data02.color = PNGreyColor
+        data02.itemCount = lineChart.xLabels.count
+        data02.inflexionPointStyle = PNLineChartData.PNLineChartPointStyle.PNLineChartPointStyleCycle
+        data02.getData = ({(index: Int) -> PNLineChartDataItem in
+            let yValue:CGFloat = CGFloat(info.incompleteDataArray[index])
+            let item = PNLineChartDataItem(y: yValue)
+            return item
+        })
         
+        lineChart.chartData = [data01, data02]
         lineChart.strokeChart()
-        return lineChart
+        
+        return (lineChart, ChartLabel)
     }
     
     func configureBarChart() -> PNBarChart {
@@ -89,6 +101,19 @@ class ChartsViewController: UITableViewController {
         barChart.strokeChart()
         return barChart
     }
+    
+//    func configureCircleChart() -> PNCircleChart {
+//        let info = configureDataAndLabel()
+//        var totalSucceed = 0, totalFailed = 0
+//        for (succeed, failed) in zip(info.dataArray, info.incompleteDataArray) {
+//            totalSucceed += succeed
+//            totalFailed += failed
+//        }
+//        
+//        let circleChart = PNCircleChart(frame: CGRectMake(0, 80, UIScreen.mainScreen().bounds.size.width, 100), total: totalSucceed + totalFailed, current: totalSucceed, clockwise: false, shadow: true, shadowColor: UIColor.greenColor())
+//        circleChart.strokeChart()
+//        return circleChart
+//    }
     
     func configureDataAndLabel() -> (dateLabels: [String], dataArray: [Int], incompleteDataArray: [Int]) {
         var dateLabels = [String]()
@@ -118,5 +143,20 @@ class ChartsViewController: UITableViewController {
     
     @IBAction func done() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
+    }
+    
+    func userClickedOnLinePoint(point: CGPoint, lineIndex: Int)
+    {
+        print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex)")
+    }
+    
+    func userClickedOnBarChartIndex(barIndex: Int)
+    {
+        print("Click  on bar \(barIndex)")
     }
 }

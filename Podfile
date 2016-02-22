@@ -7,4 +7,5 @@ target 'Kikan' do
   pod "AHKActionSheet"
   pod 'STZPopupView'
   pod "AKPickerView-Swift"
+  pod 'PNChartSwift',:git => 'https://github.com/kevinzhow/PNChart-Swift.git'
 end
