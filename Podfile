@@ -8,4 +8,5 @@ target 'Kikan' do
   pod 'STZPopupView'
   pod "AKPickerView-Swift"
   pod 'PNChartSwift',:git => 'https://github.com/kevinzhow/PNChart-Swift.git'
+  pod 'SMSegmentView', '~> 1.1'
 end

@@ -11,6 +11,7 @@ import AVFoundation
 import AHKActionSheet
 import STZPopupView
 import AKPickerView_Swift
+import WXTabBarController
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,
         SettingsViewControllerDelegate, YALContextMenuTableViewDelegate, AKPickerViewDataSource, AKPickerViewDelegate {
@@ -36,6 +37,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var text: String?
     
     let timeOptions = ["1", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"]
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -222,7 +224,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let navigationController = UINavigationController(rootViewController: settingsViewController)
             presentViewController(navigationController, animated: true, completion: nil)
         } else if indexPath.row == 1 {
-            let chartsViewController = storyboard?.instantiateViewControllerWithIdentifier("chartsViewController") as! ChartsViewController
+            let chartsViewController = storyboard?.instantiateViewControllerWithIdentifier("chartsSegmentViewController") as! ChartsSegmentController
             chartsViewController.dataModel = dataModel
             let navigationController = UINavigationController(rootViewController: chartsViewController)
             presentViewController(navigationController, animated: true, completion: nil)

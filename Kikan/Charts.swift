@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import PNChart
 import PNChartSwift
 import Foundation
 
@@ -15,35 +14,9 @@ public let PNGreenColor = UIColor(red: 77.0 / 255.0 , green: 196.0 / 255.0, blue
 public let PNGreyColor = UIColor(red: 186.0 / 255.0 , green: 186.0 / 255.0, blue: 186.0 / 255.0, alpha: 1.0)
 public let PNLightGreyColor = UIColor(red: 246.0 / 255.0 , green: 246.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
 
-class ChartsViewController: UITableViewController, PNChartDelegate {
+class Charts: PNChartDelegate {
     var dataModel: DataModel?
     var monthStrRep = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "June.", "July.", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("chartsCell", forIndexPath: indexPath)
-        if indexPath.row == 1 {
-//            cell.contentView.addSubview(configureCircleChart())
-        } else if indexPath.row == 2 {
-            cell.contentView.addSubview(configureBarChart())
-        } else {
-            cell.contentView.addSubview(configureLineChart().0)
-            cell.contentView.addSubview(configureLineChart().1)
-        }
-        
-        return cell
-    }
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 250
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
     
     func configureLineChart() -> (PNLineChart , UILabel) {
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 90, 320.0, 30))
@@ -102,19 +75,6 @@ class ChartsViewController: UITableViewController, PNChartDelegate {
         return barChart
     }
     
-//    func configureCircleChart() -> PNCircleChart {
-//        let info = configureDataAndLabel()
-//        var totalSucceed = 0, totalFailed = 0
-//        for (succeed, failed) in zip(info.dataArray, info.incompleteDataArray) {
-//            totalSucceed += succeed
-//            totalFailed += failed
-//        }
-//        
-//        let circleChart = PNCircleChart(frame: CGRectMake(0, 80, UIScreen.mainScreen().bounds.size.width, 100), total: totalSucceed + totalFailed, current: totalSucceed, clockwise: false, shadow: true, shadowColor: UIColor.greenColor())
-//        circleChart.strokeChart()
-//        return circleChart
-//    }
-    
     func configureDataAndLabel() -> (dateLabels: [String], dataArray: [Int], incompleteDataArray: [Int]) {
         var dateLabels = [String]()
         var dataArray = [Int](), incompleteDataArray = [Int]()
@@ -141,10 +101,6 @@ class ChartsViewController: UITableViewController, PNChartDelegate {
         return (dateLabels, dataArray, incompleteDataArray)
     }
     
-    @IBAction func done() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     func userClickedOnLineKeyPoint(point: CGPoint, lineIndex: Int, keyPointIndex: Int)
     {
         print("Click Key on line \(point.x), \(point.y) line index is \(lineIndex) and point index is \(keyPointIndex)")
@@ -157,6 +113,6 @@ class ChartsViewController: UITableViewController, PNChartDelegate {
     
     func userClickedOnBarChartIndex(barIndex: Int)
     {
-        print("Click  on bar \(barIndex)")
+        print("Click on bar \(barIndex)")
     }
 }

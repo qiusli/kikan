@@ -11,7 +11,7 @@
 		AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3108D61C57387D003F92E8 /* SettingsViewController.swift */; };
 		AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF71C58C0BA00AAE30A /* DataModel.swift */; };
 		AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */; };
-		AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */; };
+		AA32BD2F1C5B2D6200AAE30A /* Charts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD2E1C5B2D6200AAE30A /* Charts.swift */; };
 		AA32BD371C5D8B6C00AAE30A /* MyDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA32BD361C5D8B6C00AAE30A /* MyDate.swift */; };
 		AA64121C1C55D2A0007076DE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA64121B1C55D2A0007076DE /* AVFoundation.framework */; };
 		AA6412221C55D2E8007076DE /* rollo.wav in Resources */ = {isa = PBXBuildFile; fileRef = AA64121E1C55D2E8007076DE /* rollo.wav */; };
@@ -30,6 +30,8 @@
 		AA6412541C5630EE007076DE /* ContextMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6412531C5630EE007076DE /* ContextMenuCell.xib */; };
 		AA6412561C56313B007076DE /* ContextMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6412551C56313B007076DE /* ContextMenuCell.swift */; };
 		AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6412591C563CC2007076DE /* YALNavigationBar.m */; };
+		AA86F3BE1C9140B500718B8A /* CircleChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA86F3BD1C9140B500718B8A /* CircleChart.swift */; };
+		AAA5FBA21C887746005748D4 /* ChartsSegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA5FBA11C887746005748D4 /* ChartsSegmentController.swift */; };
 		AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D87B1C54B88000BFC22E /* Kikan-Bridging-Header.h */; };
 		AAD6D8801C54BBB800BFC22E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD6D87F1C54BBB800BFC22E /* FirstViewController.swift */; };
 		AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADFA2461C54397D00E3F057 /* AppDelegate.swift */; };
@@ -45,7 +47,7 @@
 		AA3108D61C57387D003F92E8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA32BCF71C58C0BA00AAE30A /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelections.swift; sourceTree = "<group>"; };
-		AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		AA32BD2E1C5B2D6200AAE30A /* Charts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Charts.swift; sourceTree = "<group>"; };
 		AA32BD361C5D8B6C00AAE30A /* MyDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDate.swift; sourceTree = "<group>"; };
 		AA64121B1C55D2A0007076DE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AA64121E1C55D2E8007076DE /* rollo.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rollo.wav; sourceTree = "<group>"; };
@@ -68,6 +70,8 @@
 		AA6412551C56313B007076DE /* ContextMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuCell.swift; sourceTree = "<group>"; };
 		AA6412581C563CC2007076DE /* YALNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YALNavigationBar.h; sourceTree = "<group>"; };
 		AA6412591C563CC2007076DE /* YALNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YALNavigationBar.m; sourceTree = "<group>"; };
+		AA86F3BD1C9140B500718B8A /* CircleChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleChart.swift; sourceTree = "<group>"; };
+		AAA5FBA11C887746005748D4 /* ChartsSegmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsSegmentController.swift; sourceTree = "<group>"; };
 		AAD6D87B1C54B88000BFC22E /* Kikan-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Kikan-Bridging-Header.h"; sourceTree = "<group>"; };
 		AAD6D87F1C54BBB800BFC22E /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		AADFA2431C54397D00E3F057 /* Kikan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kikan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +160,18 @@
 			name = custom_cell;
 			sourceTree = "<group>";
 		};
+		AA86F3BC1C8FC9DC00718B8A /* custom object */ = {
+			isa = PBXGroup;
+			children = (
+				AA32BCF71C58C0BA00AAE30A /* DataModel.swift */,
+				AA32BD2E1C5B2D6200AAE30A /* Charts.swift */,
+				AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */,
+				AA32BD361C5D8B6C00AAE30A /* MyDate.swift */,
+				AA86F3BD1C9140B500718B8A /* CircleChart.swift */,
+			);
+			name = "custom object";
+			sourceTree = "<group>";
+		};
 		AAD6D86B1C54903000BFC22E /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +203,7 @@
 		AADFA2451C54397D00E3F057 /* Kikan */ = {
 			isa = PBXGroup;
 			children = (
+				AA86F3BC1C8FC9DC00718B8A /* custom object */,
 				AA6412571C563BE5007076DE /* custom_cell */,
 				AA64121D1C55D2C5007076DE /* sound */,
 				AAD6D86B1C54903000BFC22E /* lib */,
@@ -197,10 +214,7 @@
 				AADFA2521C54397D00E3F057 /* Info.plist */,
 				AAD6D87F1C54BBB800BFC22E /* FirstViewController.swift */,
 				AA3108D61C57387D003F92E8 /* SettingsViewController.swift */,
-				AA32BCF71C58C0BA00AAE30A /* DataModel.swift */,
-				AA32BCF91C58C2BC00AAE30A /* UserSelections.swift */,
-				AA32BD2E1C5B2D6200AAE30A /* ChartsViewController.swift */,
-				AA32BD361C5D8B6C00AAE30A /* MyDate.swift */,
+				AAA5FBA11C887746005748D4 /* ChartsSegmentController.swift */,
 			);
 			path = Kikan;
 			sourceTree = "<group>";
@@ -348,15 +362,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA86F3BE1C9140B500718B8A /* CircleChart.swift in Sources */,
 				AA6412561C56313B007076DE /* ContextMenuCell.swift in Sources */,
 				AA32BD371C5D8B6C00AAE30A /* MyDate.swift in Sources */,
 				AA32BCFA1C58C2BC00AAE30A /* UserSelections.swift in Sources */,
-				AA32BD2F1C5B2D6200AAE30A /* ChartsViewController.swift in Sources */,
+				AA32BD2F1C5B2D6200AAE30A /* Charts.swift in Sources */,
 				AA64125A1C563CC2007076DE /* YALNavigationBar.m in Sources */,
 				AA64124B1C55EBCC007076DE /* UIView+YALConstraints.m in Sources */,
 				AA64124C1C55EBCC007076DE /* YALContextMenuTableView.m in Sources */,
 				AAD6D87E1C54B8A000BFC22E /* Kikan-Bridging-Header.h in Sources */,
 				AA3108D71C57387D003F92E8 /* SettingsViewController.swift in Sources */,
+				AAA5FBA21C887746005748D4 /* ChartsSegmentController.swift in Sources */,
 				AA32BCF81C58C0BA00AAE30A /* DataModel.swift in Sources */,
 				AAD6D8801C54BBB800BFC22E /* FirstViewController.swift in Sources */,
 				AADFA2471C54397D00E3F057 /* AppDelegate.swift in Sources */,

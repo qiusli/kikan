@@ -158,7 +158,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="39z-t1-9bd" id="fLe-bx-uhz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -179,6 +179,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1IC-dx-ReA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2439" y="980"/>
+        </scene>
+        <!--Charts Segment Controller-->
+        <scene sceneID="GO7-fC-Gzx">
+            <objects>
+                <viewController storyboardIdentifier="chartsSegmentViewController" id="sS5-Yb-yDH" customClass="ChartsSegmentController" customModule="Kikan" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Xo-JG-RfG"/>
+                        <viewControllerLayoutGuide type="bottom" id="PHa-bP-gVF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Um-aQ-0GN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Maz-aZ-N3o">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="qK3-1W-wrU">
+                            <connections>
+                                <action selector="done:" destination="sS5-Yb-yDH" id="peJ-Rl-H6c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0Q-NA-TyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2439" y="1670"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9eW-LI-J8F">
@@ -233,6 +258,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0y-8V-KDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1791" y="980"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U1d-3T-s9x">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aaG-Ec-nmd" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DY8-KT-Lfm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sS5-Yb-yDH" kind="relationship" relationship="rootViewController" id="p2d-o7-wdb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PvI-ML-nCM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="1670"/>
         </scene>
     </scenes>
 </document>
